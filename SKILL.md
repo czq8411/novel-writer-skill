@@ -3,10 +3,11 @@ name: novel-writer
 description: |
   爆款网文主编兼白金写手，覆盖网文创作全流程：灵感构思→大纲架构→细纲规划→正文创作→包装运营→诊断复盘→全自动流水线。
   支持7大模式按需切换，内置去AI味、沉浸式体验、数据导向三大核心铁律，MCP工具联动（Memory/Sequential Thinking/Filesystem）。
+  v19.0新增：连续创作模式、子弹时间进阶技法、Python字数检查脚本、文学性创作模式、无缝模式切换、创作过程实时可视化、智能续写上下文快照、读者视角实时预览、跨技能协作接口、创作模板社区机制。
   当用户要求：写小说、网文创作、大纲设计、章节续写、去AI味、小说诊断、角色设计、世界观构建、爽点设计时使用。
 metadata:
-  trigger: 写小说、网文创作、大纲、细纲、续写、角色设计、世界观、爽点、去AI味、小说诊断、一键创作、灵感碰撞、跨章校验、版本对比、关系图、世界地图、时间线、爽点热力图、情绪曲线
-  version: v18.0
+  trigger: 写小说、网文创作、大纲、细纲、续写、角色设计、世界观、爽点、去AI味、小说诊断、一键创作、灵感碰撞、跨章校验、版本对比、关系图、世界地图、时间线、爽点热力图、情绪曲线、连续创作、子弹时间、文学模式、深度模式、模式切换、字数检查、创作仪表板、读者视角、模拟评论、协作、模板社区、导出模板、导入模板
+  version: v19.0
   category: 内容创作
 ---
 
@@ -21,7 +22,7 @@ metadata:
 | 属性 | 内容 |
 |------|------|
 | **角色** | 爆款网文主编兼白金写手 |
-| **版本** | v18.0 |
+| **版本** | v19.0 |
 | **定位** | 精通网文全流程：灵感构思→大纲架构→细纲规划→正文创作→包装运营→诊断复盘 |
 | **核心能力** | 全流程创作、MCP工具联动（Memory/Sequential Thinking/Filesystem）、去AI味+沉浸式体验+数据导向 |
 
@@ -72,11 +73,12 @@ metadata:
 | MCP工具操作 | [shared/mcp-specs.md](shared/mcp-specs.md) | Memory/Sequential Thinking/Filesystem调用规范 |
 | 偏好管理/续写/里程碑 | [shared/preferences.md](shared/preferences.md) | 偏好存储、中断续写、里程碑系统 |
 | 输出格式模板 | [shared/output-formats.md](shared/output-formats.md) | 通用输出格式、正文输出格式 |
-| 边界/异常/新手引导/模式切换 | [shared/boundaries.md](shared/boundaries.md) | 边界定义、异常处理、用户等级、引导流程、模式切换保护 |
+| 边界/异常/新手引导/模式切换 | [shared/boundaries.md](shared/boundaries.md) | 边界定义、异常处理、用户等级、引导流程、无缝模式切换 |
 | 伦理/原创性/合规 | [shared/ethics.md](shared/ethics.md) | 原创性检测、AI参与度、版权、敏感内容过滤 |
 | 情节结构模板 | [shared/plot-structures.md](shared/plot-structures.md) | 三幕式、英雄之旅、类型专用结构、网文特色结构、反转/多线叙事 |
 | 题材差异化指南 | [shared/genre-guides.md](shared/genre-guides.md) | 玄幻/言情/悬疑/科幻/历史五大题材的节奏/爽点/对话/场景专项指导 |
-| 创作模板市场 | [shared/templates.md](shared/templates.md) | 退婚流/废材逆袭/重生复仇/系统流/穿越种田五大模板 |
+| 创作模板市场 | [shared/templates.md](shared/templates.md) | 退婚流/废材逆袭/重生复仇/系统流/穿越种田五大模板+参数化+社区机制 |
+| 字数检查脚本 | [scripts/check_chapter_wordcount.py](scripts/check_chapter_wordcount.py) | Python章节字数检查脚本，支持JSON输出和详细分析 |
 
 ---
 
@@ -86,15 +88,17 @@ metadata:
 
 | 触发词 | 模式 | 子文件 |
 |--------|------|--------|
-| `灵感` `构思` `创意` `脑洞` `卡文了` `灵感碰撞` `头脑风暴` `What-If` `角色对话` `压力测试` `题材融合` `今日灵感` `日推` | 模式A | [modes/mode-a-inspiration.md](modes/mode-a-inspiration.md) |
-| `大纲` `故事框架` `世界观` | 模式B | [modes/mode-b-outline.md](modes/mode-b-outline.md) |
+| `灵感` `构思` `创意` `脑洞` `卡文了` `灵感碰撞` `头脑风暴` `What-If` `角色对话` `压力测试` `题材融合` `今日灵感` `日推` `碰撞灵感` | 模式A | [modes/mode-a-inspiration.md](modes/mode-a-inspiration.md) |
+| `大纲` `故事框架` `世界观` `文学模式` `深度模式` | 模式B | [modes/mode-b-outline.md](modes/mode-b-outline.md) |
 | `细纲` `章节规划` `拆解` `联动优化` `切换细纲模板` | 模式B-2 | [modes/mode-b2-detailed-outline.md](modes/mode-b2-detailed-outline.md) |
-| `写正文` `继续` `续写` `AB测试` `检查过渡` `重排章节` `跨章校验` `对比` `回退` `清理版本` `保存版本` | 模式C | [modes/mode-c-writing.md](modes/mode-c-writing.md) |
+| `写正文` `继续` `续写` `AB测试` `检查过渡` `重排章节` `跨章校验` `对比` `回退` `清理版本` `保存版本` `连续创作` `子弹时间` `字数检查` `创作仪表板` `读者视角` `模拟评论` | 模式C | [modes/mode-c-writing.md](modes/mode-c-writing.md) |
 | `包装` `书名` `简介` `文案` `标签` | 模式D | [modes/mode-d-packaging.md](modes/mode-d-packaging.md) |
-| `诊断` `复盘` `去AI味` `润色` `优化` `检查` `修复` `数据` `统计` `仪表板` `进度` `跨卷检测` `节奏评分` `节奏优化` `状态` `看板` `模拟评论` `读者视角` `关系图` `世界地图` `时间线` `爽点热力图` `情绪曲线` | 模式E | [modes/mode-e-diagnostics.md](modes/mode-e-diagnostics.md) |
-| `一键创作` `自动写` `全自动` `自动创作` | 模式F | [modes/mode-f-auto-pipeline.md](modes/mode-f-auto-pipeline.md) |
+| `诊断` `复盘` `去AI味` `润色` `优化` `检查` `修复` `数据` `统计` `仪表板` `进度` `跨卷检测` `节奏评分` `节奏优化` `状态` `看板` `模拟评论` `读者视角` `关系图` `世界地图` `时间线` `爽点热力图` `情绪曲线` `交叉诊断` | 模式E | [modes/mode-e-diagnostics.md](modes/mode-e-diagnostics.md) |
+| `一键创作` `自动写` `全自动` `自动创作` `导出Word` `创作报告` `作品提案` `创作计划PPT` `设计封面` `人物立绘` `风格参考` `导出模板` `导入模板` | 模式F | [modes/mode-f-auto-pipeline.md](modes/mode-f-auto-pipeline.md) |
 
 **执行流程**：识别触发词 → 模式切换前置检查 → 加载对应模式子文件 → 按子文件指令执行
+
+**无缝切换**：支持在任一模式中直接切换到其他模式（如"切换到模式E"、"先诊断第5章再继续写"），系统自动保存上下文并在目标模式完成后提示返回。详见 [shared/boundaries.md](shared/boundaries.md) 无缝模式切换章节。
 
 ---
 
