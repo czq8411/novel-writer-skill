@@ -7,7 +7,7 @@ description: |
   当用户要求：写小说、网文创作、大纲设计、章节续写、去AI味、小说诊断、角色设计、世界观构建、爽点设计时使用。
 metadata:
   trigger: 写小说、网文创作、大纲、细纲、续写、角色设计、世界观、爽点、去AI味、小说诊断、一键创作、灵感碰撞、跨章校验、版本对比、关系图、世界地图、时间线、爽点热力图、情绪曲线、连续创作、子弹时间、文学模式、深度模式、模式切换、字数检查、创作仪表板、读者视角、模拟评论、协作、模板社区、导出模板、导入模板、对话光谱、知识图谱、风格指纹、留存预测、平台适配、瓶颈突破、基准测试、分支创作、市场趋势、健康监控、细纲批量诊断、正文批量诊断、批量诊断、自动修复细纲、自动修复正文、仅诊断不修复、全量诊断、一键诊断修复、大纲补充、反向补充大纲、细纲反馈大纲、自动补充大纲、大纲缺口检测、大纲完整性检查
-  version: v20.0
+  version: v20.1
   category: 内容创作
 ---
 
@@ -22,7 +22,7 @@ metadata:
 | 属性 | 内容 |
 |------|------|
 | **角色** | 爆款网文主编兼白金写手 |
-| **版本** | v20.0 |
+| **版本** | v20.1 |
 | **定位** | 精通网文全流程：灵感构思→大纲架构→细纲规划→正文创作→包装运营→诊断复盘 |
 | **核心能力** | 全流程创作、MCP工具联动（Memory/Sequential Thinking/Filesystem）、去AI味+沉浸式体验+数据导向 |
 
@@ -165,8 +165,8 @@ metadata:
 
 | 文件 | 行数 | 功能 |
 |------|------|------|
-| [modes/mode-a-inspiration.md](modes/mode-a-inspiration.md) | 486行 | 灵感构思：创意方案生成、市场定位、瓶颈突破、灵感碰撞工作坊、灵感日推、瓶颈突破工作坊、市场趋势分析 |
-| [modes/mode-b-outline.md](modes/mode-b-outline.md) | 436行 | 大纲架构：7模块大纲、角色关系动态图谱 |
+| [modes/mode-a-inspiration.md](modes/mode-a-inspiration.md) | 775行 | 灵感构思：创意方案生成、市场定位、瓶颈突破、灵感碰撞工作坊、灵感日推、瓶颈突破工作坊、市场趋势分析、基础设定完整性检测 |
+| [modes/mode-b-outline.md](modes/mode-b-outline.md) | 661行 | 大纲架构：7模块大纲、角色关系动态图谱、基础设定缺失提示 |
 | [modes/mode-b2-detailed-outline.md](modes/mode-b2-detailed-outline.md) | 327行 | 细纲工程：章节拆解、伏笔管理、质量评分、反向验证、反向补充、模板库 |
 | [modes/mode-c-writing.md](modes/mode-c-writing.md) | 232行 | 正文创作：项目管理、写作流程、章节过渡、排版规则、风格指纹、留存预测 |
 | [modes/mode-c/scene-techniques.md](modes/mode-c/scene-techniques.md) | 224行 | 场景描写技法：镜头语言、多题材实战示例、扩充三大技法（按需加载） |
@@ -177,9 +177,9 @@ metadata:
 | [modes/mode-c/quality-assurance.md](modes/mode-c/quality-assurance.md) | 331行 | AB测试+自动校验+跨章节校验（按需加载） |
 | [modes/mode-c/version-management.md](modes/mode-c/version-management.md) | 77行 | 章节版本管理：版本记录、对比、回退、清理、分支创作、快照（按需加载） |
 | [modes/mode-d-packaging.md](modes/mode-d-packaging.md) | 211行 | 包装运营：书名优化、简介打磨、标签提炼、多平台格式适配 |
-| [modes/mode-e-diagnostics.md](modes/mode-e-diagnostics.md) | 153行 | 数据复盘：诊断流程、评分体系、优先级排序、质量基准测试 |
+| [modes/mode-e-diagnostics.md](modes/mode-e-diagnostics.md) | 274行 | 数据复盘：诊断流程、评分体系、优先级排序、质量基准测试、基础设定完整性检查 |
 | [modes/mode-e/dashboard.md](modes/mode-e/dashboard.md) | 194行 | 数据分析仪表板+可视化仪表板（按需加载） |
-| [modes/mode-e/diagnosis-details.md](modes/mode-e/diagnosis-details.md) | 126行 | 8维诊断+大纲一致性+毒点排查（按需加载） |
+| [modes/mode-e/diagnosis-details.md](modes/mode-e/diagnosis-details.md) | 265行 | 9维诊断+大纲一致性+毒点排查+基础设定完整性诊断（按需加载） |
 | [modes/mode-e/cross-volume-rhythm.md](modes/mode-e/cross-volume-rhythm.md) | 240行 | 跨卷检测+节奏评分（按需加载） |
 | [modes/mode-e/reader-visualization.md](modes/mode-e/reader-visualization.md) | 370行 | 读者模拟+多模态可视化（按需加载） |
 | [modes/mode-e/batch-auto-fix.md](modes/mode-e/batch-auto-fix.md) | 新增 | 批量自动诊断+修复：细纲/正文逐章诊断、P0/P1自动修复、仅诊断模式、大纲反向补充 |
@@ -199,4 +199,4 @@ metadata:
 | [shared/templates.md](shared/templates.md) | 新增 | 创作模板市场：5大网文经典模板 |
 | [shared/knowledge-graph.md](shared/knowledge-graph.md) | 新增 | 创作知识图谱：人物关系、势力网络、伏笔链、时间线、物品传承 |
 | [shared/health-monitor.md](shared/health-monitor.md) | 新增 | 创作健康度监控：节奏监控、质量预警、瓶颈预警、成就系统、复盘报告 |
-| [shared/outline-supplement.md](shared/outline-supplement.md) | 新增 | 大纲反向补充：细纲→大纲缺口识别、7大模块补充方案生成、自动/手动补充 |
+| [shared/outline-supplement.md](shared/outline-supplement.md) | 429行 | 大纲反向补充：细纲→大纲缺口识别、8大模块补充方案生成、自动/手动补充、基础设定完整性缺口检测 |
