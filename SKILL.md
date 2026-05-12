@@ -3,11 +3,11 @@ name: novel-writer
 description: |
   爆款网文主编兼白金写手，覆盖网文创作全流程：灵感构思→大纲架构→细纲规划→正文创作→包装运营→诊断复盘→全自动流水线。
   支持7大模式按需切换，内置去AI味、沉浸式体验、数据导向三大核心铁律，MCP工具联动（Memory/Sequential Thinking/Filesystem）。
-  v19.0新增：连续创作模式、子弹时间进阶技法、Python字数检查脚本、文学性创作模式、无缝模式切换、创作过程实时可视化、智能续写上下文快照、读者视角实时预览、跨技能协作接口、创作模板社区机制。
+  v20.0新增：对话光谱体系、创作知识图谱、风格指纹系统、读者留存预测、多平台格式适配、瓶颈突破工作坊、质量基准测试、版本控制增强、市场趋势分析、创作健康度监控、批量自动诊断修复、大纲反向补充机制。
   当用户要求：写小说、网文创作、大纲设计、章节续写、去AI味、小说诊断、角色设计、世界观构建、爽点设计时使用。
 metadata:
-  trigger: 写小说、网文创作、大纲、细纲、续写、角色设计、世界观、爽点、去AI味、小说诊断、一键创作、灵感碰撞、跨章校验、版本对比、关系图、世界地图、时间线、爽点热力图、情绪曲线、连续创作、子弹时间、文学模式、深度模式、模式切换、字数检查、创作仪表板、读者视角、模拟评论、协作、模板社区、导出模板、导入模板
-  version: v19.0
+  trigger: 写小说、网文创作、大纲、细纲、续写、角色设计、世界观、爽点、去AI味、小说诊断、一键创作、灵感碰撞、跨章校验、版本对比、关系图、世界地图、时间线、爽点热力图、情绪曲线、连续创作、子弹时间、文学模式、深度模式、模式切换、字数检查、创作仪表板、读者视角、模拟评论、协作、模板社区、导出模板、导入模板、对话光谱、知识图谱、风格指纹、留存预测、平台适配、瓶颈突破、基准测试、分支创作、市场趋势、健康监控、细纲批量诊断、正文批量诊断、批量诊断、自动修复细纲、自动修复正文、仅诊断不修复、全量诊断、一键诊断修复、大纲补充、反向补充大纲、细纲反馈大纲、自动补充大纲、大纲缺口检测、大纲完整性检查
+  version: v20.0
   category: 内容创作
 ---
 
@@ -22,7 +22,7 @@ metadata:
 | 属性 | 内容 |
 |------|------|
 | **角色** | 爆款网文主编兼白金写手 |
-| **版本** | v19.0 |
+| **版本** | v20.0 |
 | **定位** | 精通网文全流程：灵感构思→大纲架构→细纲规划→正文创作→包装运营→诊断复盘 |
 | **核心能力** | 全流程创作、MCP工具联动（Memory/Sequential Thinking/Filesystem）、去AI味+沉浸式体验+数据导向 |
 
@@ -78,6 +78,9 @@ metadata:
 | 情节结构模板 | [shared/plot-structures.md](shared/plot-structures.md) | 三幕式、英雄之旅、类型专用结构、网文特色结构、反转/多线叙事 |
 | 题材差异化指南 | [shared/genre-guides.md](shared/genre-guides.md) | 玄幻/言情/悬疑/科幻/历史五大题材的节奏/爽点/对话/场景专项指导 |
 | 创作模板市场 | [shared/templates.md](shared/templates.md) | 退婚流/废材逆袭/重生复仇/系统流/穿越种田五大模板+参数化+社区机制 |
+| 创作知识图谱 | [shared/knowledge-graph.md](shared/knowledge-graph.md) | 人物关系图谱、势力网络、伏笔依赖链、时间线校验、物品传承链 |
+| 创作健康度监控 | [shared/health-monitor.md](shared/health-monitor.md) | 创作状态仪表板、健康度评分、风险预警、干预建议 |
+| 大纲反向补充 | [shared/outline-supplement.md](shared/outline-supplement.md) | 细纲→大纲缺口识别、7大模块补充方案生成、自动/手动补充 |
 | 字数检查脚本 | [scripts/check_chapter_wordcount.py](scripts/check_chapter_wordcount.py) | Python章节字数检查脚本，支持JSON输出和详细分析 |
 
 ---
@@ -88,12 +91,12 @@ metadata:
 
 | 触发词 | 模式 | 子文件 |
 |--------|------|--------|
-| `灵感` `构思` `创意` `脑洞` `卡文了` `灵感碰撞` `头脑风暴` `What-If` `角色对话` `压力测试` `题材融合` `今日灵感` `日推` `碰撞灵感` | 模式A | [modes/mode-a-inspiration.md](modes/mode-a-inspiration.md) |
+| `灵感` `构思` `创意` `脑洞` `卡文了` `灵感碰撞` `头脑风暴` `What-If` `角色对话` `压力测试` `题材融合` `今日灵感` `日推` `碰撞灵感` `瓶颈突破` `市场趋势` | 模式A | [modes/mode-a-inspiration.md](modes/mode-a-inspiration.md) |
 | `大纲` `故事框架` `世界观` `文学模式` `深度模式` | 模式B | [modes/mode-b-outline.md](modes/mode-b-outline.md) |
-| `细纲` `章节规划` `拆解` `联动优化` `切换细纲模板` | 模式B-2 | [modes/mode-b2-detailed-outline.md](modes/mode-b2-detailed-outline.md) |
-| `写正文` `继续` `续写` `AB测试` `检查过渡` `重排章节` `跨章校验` `对比` `回退` `清理版本` `保存版本` `连续创作` `子弹时间` `字数检查` `创作仪表板` `读者视角` `模拟评论` | 模式C | [modes/mode-c-writing.md](modes/mode-c-writing.md) |
-| `包装` `书名` `简介` `文案` `标签` | 模式D | [modes/mode-d-packaging.md](modes/mode-d-packaging.md) |
-| `诊断` `复盘` `去AI味` `润色` `优化` `检查` `修复` `数据` `统计` `仪表板` `进度` `跨卷检测` `节奏评分` `节奏优化` `状态` `看板` `模拟评论` `读者视角` `关系图` `世界地图` `时间线` `爽点热力图` `情绪曲线` `交叉诊断` | 模式E | [modes/mode-e-diagnostics.md](modes/mode-e-diagnostics.md) |
+| `细纲` `章节规划` `拆解` `联动优化` `切换细纲模板` `大纲补充` `反向补充大纲` `细纲反馈大纲` | 模式B-2 | [modes/mode-b2-detailed-outline.md](modes/mode-b2-detailed-outline.md) |
+| `写正文` `继续` `续写` `AB测试` `检查过渡` `重排章节` `跨章校验` `对比` `回退` `清理版本` `保存版本` `连续创作` `子弹时间` `字数检查` `创作仪表板` `读者视角` `模拟评论` `风格指纹` `风格迁移` `留存预测` `分支创作` `创建分支` `合并分支` `创建快照` | 模式C | [modes/mode-c-writing.md](modes/mode-c-writing.md) |
+| `包装` `书名` `简介` `文案` `标签` `平台适配` `适配平台` | 模式D | [modes/mode-d-packaging.md](modes/mode-d-packaging.md) |
+| `诊断` `复盘` `去AI味` `润色` `优化` `检查` `修复` `数据` `统计` `仪表板` `进度` `跨卷检测` `节奏评分` `节奏优化` `状态` `看板` `模拟评论` `读者视角` `关系图` `世界地图` `时间线` `爽点热力图` `情绪曲线` `交叉诊断` `基准测试` `竞争力` `健康度` `健康监控` `细纲批量诊断` `正文批量诊断` `批量诊断` `自动修复细纲` `自动修复正文` `仅诊断不修复` `全量诊断` `一键诊断修复` `大纲补充` `反向补充大纲` `自动补充大纲` `大纲缺口检测` `大纲完整性检查` | 模式E | [modes/mode-e-diagnostics.md](modes/mode-e-diagnostics.md) |
 | `一键创作` `自动写` `全自动` `自动创作` `导出Word` `创作报告` `作品提案` `创作计划PPT` `设计封面` `人物立绘` `风格参考` `导出模板` `导入模板` | 模式F | [modes/mode-f-auto-pipeline.md](modes/mode-f-auto-pipeline.md) |
 
 **执行流程**：识别触发词 → 模式切换前置检查 → 加载对应模式子文件 → 按子文件指令执行
@@ -162,23 +165,24 @@ metadata:
 
 | 文件 | 行数 | 功能 |
 |------|------|------|
-| [modes/mode-a-inspiration.md](modes/mode-a-inspiration.md) | 486行 | 灵感构思：创意方案生成、市场定位、瓶颈突破、灵感碰撞工作坊、灵感日推 |
+| [modes/mode-a-inspiration.md](modes/mode-a-inspiration.md) | 486行 | 灵感构思：创意方案生成、市场定位、瓶颈突破、灵感碰撞工作坊、灵感日推、瓶颈突破工作坊、市场趋势分析 |
 | [modes/mode-b-outline.md](modes/mode-b-outline.md) | 436行 | 大纲架构：7模块大纲、角色关系动态图谱 |
-| [modes/mode-b2-detailed-outline.md](modes/mode-b2-detailed-outline.md) | 327行 | 细纲工程：章节拆解、伏笔管理、质量评分、反向验证、模板库 |
-| [modes/mode-c-writing.md](modes/mode-c-writing.md) | 232行 | 正文创作：项目管理、写作流程、章节过渡、排版规则 |
+| [modes/mode-b2-detailed-outline.md](modes/mode-b2-detailed-outline.md) | 327行 | 细纲工程：章节拆解、伏笔管理、质量评分、反向验证、反向补充、模板库 |
+| [modes/mode-c-writing.md](modes/mode-c-writing.md) | 232行 | 正文创作：项目管理、写作流程、章节过渡、排版规则、风格指纹、留存预测 |
 | [modes/mode-c/scene-techniques.md](modes/mode-c/scene-techniques.md) | 224行 | 场景描写技法：镜头语言、多题材实战示例、扩充三大技法（按需加载） |
-| [modes/mode-c/character-dialogue.md](modes/mode-c/character-dialogue.md) | 298行 | 角色灵魂注入+对话技法：潜台词四法、快慢节奏、沉默戏剧、权力博弈（按需加载） |
+| [modes/mode-c/character-dialogue.md](modes/mode-c/character-dialogue.md) | 298行 | 角色灵魂注入+对话技法：潜台词四法、快慢节奏、沉默戏剧、权力博弈、对话光谱体系（按需加载） |
 | [modes/mode-c/chapter-openings.md](modes/mode-c/chapter-openings.md) | 新增 | 章节开头技巧：十种强力开头+三题材示例（按需加载） |
 | [modes/mode-c/hook-techniques.md](modes/mode-c/hook-techniques.md) | 新增 | 悬念钩子分类：十三种钩子+网文示例+强度检查（按需加载） |
 | [modes/mode-c/content-expansion.md](modes/mode-c/content-expansion.md) | 新增 | 内容扩充技巧：五大扩充技法+防注水原则（按需加载） |
 | [modes/mode-c/quality-assurance.md](modes/mode-c/quality-assurance.md) | 331行 | AB测试+自动校验+跨章节校验（按需加载） |
-| [modes/mode-c/version-management.md](modes/mode-c/version-management.md) | 77行 | 章节版本管理（按需加载） |
-| [modes/mode-d-packaging.md](modes/mode-d-packaging.md) | 211行 | 包装运营：书名优化、简介打磨、标签提炼 |
-| [modes/mode-e-diagnostics.md](modes/mode-e-diagnostics.md) | 153行 | 数据复盘：诊断流程、评分体系、优先级排序 |
+| [modes/mode-c/version-management.md](modes/mode-c/version-management.md) | 77行 | 章节版本管理：版本记录、对比、回退、清理、分支创作、快照（按需加载） |
+| [modes/mode-d-packaging.md](modes/mode-d-packaging.md) | 211行 | 包装运营：书名优化、简介打磨、标签提炼、多平台格式适配 |
+| [modes/mode-e-diagnostics.md](modes/mode-e-diagnostics.md) | 153行 | 数据复盘：诊断流程、评分体系、优先级排序、质量基准测试 |
 | [modes/mode-e/dashboard.md](modes/mode-e/dashboard.md) | 194行 | 数据分析仪表板+可视化仪表板（按需加载） |
 | [modes/mode-e/diagnosis-details.md](modes/mode-e/diagnosis-details.md) | 126行 | 8维诊断+大纲一致性+毒点排查（按需加载） |
 | [modes/mode-e/cross-volume-rhythm.md](modes/mode-e/cross-volume-rhythm.md) | 240行 | 跨卷检测+节奏评分（按需加载） |
 | [modes/mode-e/reader-visualization.md](modes/mode-e/reader-visualization.md) | 370行 | 读者模拟+多模态可视化（按需加载） |
+| [modes/mode-e/batch-auto-fix.md](modes/mode-e/batch-auto-fix.md) | 新增 | 批量自动诊断+修复：细纲/正文逐章诊断、P0/P1自动修复、仅诊断模式、大纲反向补充 |
 | [modes/mode-f-auto-pipeline.md](modes/mode-f-auto-pipeline.md) | 172行 | 全自动流水线：7阶段自动化+并行模式 |
 
 ### 共享模块
@@ -193,3 +197,6 @@ metadata:
 | [shared/plot-structures.md](shared/plot-structures.md) | 新增 | 情节结构模板库：通用/类型专用/网文特色/高级结构 |
 | [shared/genre-guides.md](shared/genre-guides.md) | 新增 | 题材差异化指南：5大题材专项指导 |
 | [shared/templates.md](shared/templates.md) | 新增 | 创作模板市场：5大网文经典模板 |
+| [shared/knowledge-graph.md](shared/knowledge-graph.md) | 新增 | 创作知识图谱：人物关系、势力网络、伏笔链、时间线、物品传承 |
+| [shared/health-monitor.md](shared/health-monitor.md) | 新增 | 创作健康度监控：节奏监控、质量预警、瓶颈预警、成就系统、复盘报告 |
+| [shared/outline-supplement.md](shared/outline-supplement.md) | 新增 | 大纲反向补充：细纲→大纲缺口识别、7大模块补充方案生成、自动/手动补充 |
