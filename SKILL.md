@@ -24,7 +24,7 @@ metadata:
 | **角色** | 爆款网文主编兼白金写手 |
 | **版本** | v20.1 |
 | **定位** | 精通网文全流程：灵感构思→大纲架构→细纲规划→正文创作→包装运营→诊断复盘 |
-| **核心能力** | 全流程创作、MCP工具联动（Memory/Sequential Thinking/Filesystem）、去AI味+沉浸式体验+数据导向 |
+| **核心能力** | 全流程创作、MCP工具联动（Memory/Sequential Thinking/Filesystem）、去AI味+沉浸式体验+数据导向、14维诊断体系（含神秘感悬念/世界观展开/人物群像/爽点质量/前期铺垫）、技能自我诊断与进化 |
 
 ---
 
@@ -78,7 +78,8 @@ metadata:
 | 情节结构模板 | [shared/plot-structures.md](shared/plot-structures.md) | 三幕式、英雄之旅、类型专用结构、网文特色结构、反转/多线叙事 |
 | 题材差异化指南 | [shared/genre-guides.md](shared/genre-guides.md) | 玄幻/言情/悬疑/科幻/历史五大题材的节奏/爽点/对话/场景专项指导 |
 | 创作模板市场 | [shared/templates.md](shared/templates.md) | 退婚流/废材逆袭/重生复仇/系统流/穿越种田五大模板+参数化+社区机制 |
-| 创作知识图谱 | [shared/knowledge-graph.md](shared/knowledge-graph.md) | 人物关系图谱、势力网络、伏笔依赖链、时间线校验、物品传承链 |
+| 创作知识图谱 | [shared/knowledge-graph.md](shared/knowledge-graph.md) | 人物关系图谱（含关系过渡追踪+身份交代追踪）、势力网络、伏笔依赖链、时间线校验、物品传承链 |
+| 技能自我诊断与进化 | [shared/self-improvement.md](shared/self-improvement.md) | 诊断遗漏分析、提示词优化方案生成、用户确认后自动修改、主动巡检、改进建议库 |
 | 创作健康度监控 | [shared/health-monitor.md](shared/health-monitor.md) | 创作状态仪表板、健康度评分、风险预警、干预建议 |
 | 大纲反向补充 | [shared/outline-supplement.md](shared/outline-supplement.md) | 细纲→大纲缺口识别、7大模块补充方案生成、自动/手动补充 |
 | 字数检查脚本 | [scripts/check_chapter_wordcount.py](scripts/check_chapter_wordcount.py) | Python章节字数检查脚本，支持JSON输出和详细分析 |
@@ -174,12 +175,12 @@ metadata:
 | [modes/mode-c/chapter-openings.md](modes/mode-c/chapter-openings.md) | 新增 | 章节开头技巧：十种强力开头+三题材示例（按需加载） |
 | [modes/mode-c/hook-techniques.md](modes/mode-c/hook-techniques.md) | 新增 | 悬念钩子分类：十三种钩子+网文示例+强度检查（按需加载） |
 | [modes/mode-c/content-expansion.md](modes/mode-c/content-expansion.md) | 新增 | 内容扩充技巧：五大扩充技法+防注水原则（按需加载） |
-| [modes/mode-c/quality-assurance.md](modes/mode-c/quality-assurance.md) | 331行 | AB测试+自动校验+跨章节校验（按需加载） |
+| [modes/mode-c/quality-assurance.md](modes/mode-c/quality-assurance.md) | 331行 | AB测试+自动校验+跨章节校验（含人物关系+身份交代+神秘感悬念+世界观展开+人物群像+爽点质量+前期铺垫连续性）（按需加载） |
 | [modes/mode-c/version-management.md](modes/mode-c/version-management.md) | 77行 | 章节版本管理：版本记录、对比、回退、清理、分支创作、快照（按需加载） |
 | [modes/mode-d-packaging.md](modes/mode-d-packaging.md) | 211行 | 包装运营：书名优化、简介打磨、标签提炼、多平台格式适配 |
-| [modes/mode-e-diagnostics.md](modes/mode-e-diagnostics.md) | 274行 | 数据复盘：诊断流程、评分体系、优先级排序、质量基准测试、基础设定完整性检查 |
+| [modes/mode-e-diagnostics.md](modes/mode-e-diagnostics.md) | 274行 | 数据复盘：诊断流程、评分体系、优先级排序、质量基准测试、基础设定完整性检查、人物关系过渡、角色身份交代、神秘感悬念、世界观展开、人物群像、爽点质量、前期铺垫 |
 | [modes/mode-e/dashboard.md](modes/mode-e/dashboard.md) | 194行 | 数据分析仪表板+可视化仪表板（按需加载） |
-| [modes/mode-e/diagnosis-details.md](modes/mode-e/diagnosis-details.md) | 265行 | 9维诊断+大纲一致性+毒点排查+基础设定完整性诊断（按需加载） |
+| [modes/mode-e/diagnosis-details.md](modes/mode-e/diagnosis-details.md) | 265行 | 14维诊断+大纲一致性+毒点排查+人物关系过渡+角色身份交代+神秘感悬念+世界观展开+人物群像+爽点质量+前期铺垫+基础设定完整性诊断（按需加载） |
 | [modes/mode-e/cross-volume-rhythm.md](modes/mode-e/cross-volume-rhythm.md) | 240行 | 跨卷检测+节奏评分（按需加载） |
 | [modes/mode-e/reader-visualization.md](modes/mode-e/reader-visualization.md) | 370行 | 读者模拟+多模态可视化（按需加载） |
 | [modes/mode-e/batch-auto-fix.md](modes/mode-e/batch-auto-fix.md) | 新增 | 批量自动诊断+修复：细纲/正文逐章诊断、P0/P1自动修复、仅诊断模式、大纲反向补充 |
@@ -197,6 +198,7 @@ metadata:
 | [shared/plot-structures.md](shared/plot-structures.md) | 新增 | 情节结构模板库：通用/类型专用/网文特色/高级结构 |
 | [shared/genre-guides.md](shared/genre-guides.md) | 新增 | 题材差异化指南：5大题材专项指导 |
 | [shared/templates.md](shared/templates.md) | 新增 | 创作模板市场：5大网文经典模板 |
-| [shared/knowledge-graph.md](shared/knowledge-graph.md) | 新增 | 创作知识图谱：人物关系、势力网络、伏笔链、时间线、物品传承 |
+| [shared/knowledge-graph.md](shared/knowledge-graph.md) | 新增 | 创作知识图谱：人物关系（含关系过渡追踪+身份交代追踪）、势力网络、伏笔链、时间线、物品传承 |
 | [shared/health-monitor.md](shared/health-monitor.md) | 新增 | 创作健康度监控：节奏监控、质量预警、瓶颈预警、成就系统、复盘报告 |
+| [shared/self-improvement.md](shared/self-improvement.md) | 新增 | 技能自我诊断与进化：诊断遗漏分析、提示词优化方案生成、用户确认后自动修改、主动巡检 |
 | [shared/outline-supplement.md](shared/outline-supplement.md) | 429行 | 大纲反向补充：细纲→大纲缺口识别、8大模块补充方案生成、自动/手动补充、基础设定完整性缺口检测 |
