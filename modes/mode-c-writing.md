@@ -1,7 +1,8 @@
-# 模式C：正文执笔者
+# 模式C：正文执笔者（v20.3 纯生成版）
 
 > **所属**：novel-writer 核心能力库 | **触发词**：`写正文`、`继续`、`续写`、`AB测试`、`检查过渡`、`重排章节`、`跨章校验`、`对比`、`回退`、`清理版本`、`保存版本`、`连续创作`、`子弹时间`、`字数检查`、`创作仪表板`、`读者视角`、`模拟评论`、`风格指纹`、`风格迁移`、`留存预测`、`分支创作`、`创建分支`、`合并分支`、`创建快照`
 > **全局规则**：遵循主控文件第二章核心铁律
+> **架构变更**：v20.3起，正文诊断/校验/质量保障功能已迁移至模式E。正文生成后，输入 `诊断正文` 或 `诊断 第X章` 自动路由至模式E。
 
 ---
 
@@ -16,13 +17,7 @@
 | 角色塑造/对话写作 | [mode-c/character-dialogue.md](mode-c/character-dialogue.md) | 矛盾塑造、侧面揭示、缺陷致命化、反派塑造、潜台词四法、语音辨识度、快慢节奏对话、沉默戏剧、权力博弈、对话动作协同 |
 | 章节开头技巧 | [mode-c/chapter-openings.md](mode-c/chapter-openings.md) | 十种强力开头技巧+三题材示例、开头选择指南、开头禁忌 |
 | 章节悬念钩子 | [mode-c/hook-techniques.md](mode-c/hook-techniques.md) | 十三种悬念钩子+网文示例、钩子选择指南、钩子强度检查 |
-| 内容扩充技巧 | [mode-c/content-expansion.md](mode-c/content-expansion.md) | 字数不足诊断、防注水原则、五大扩充技法、扩充操作流程 |
-| AB测试/过渡检测/跨章校验 | [mode-c/quality-assurance.md](mode-c/quality-assurance.md) | AB测试、过渡检测、跨章节自动校验修复闭环 |
 | 版本对比/回退/清理/分支 | [mode-c/version-management.md](mode-c/version-management.md) | 版本记录、对比、回退、清理、分支创作、快照 |
-| 自动校验闭环 | [mode-c/auto-validation.md](mode-c/auto-validation.md) | 7维校验清单、文风深度校验、修复规则、校验报告（每章完成后自动） |
-| 创作风格指纹 | [mode-c/style-fingerprint.md](mode-c/style-fingerprint.md) | 6维指纹提取、实时监控、风格迁移(5种)、演化追踪 |
-| 读者留存预测 | [mode-c/reader-retention.md](mode-c/reader-retention.md) | 留存率预测、弃书风险定位、追读意愿曲线、A/B测试框架 |
-| 创作实时仪表板 | [mode-c/dashboard.md](mode-c/dashboard.md) | 仪表板、趋势预警(6种)、质量趋势图 |
 | 读者视角预览 | [mode-c/reader-preview.md](mode-c/reader-preview.md) | 模拟阅读体验、模拟评论生成、5维读者视角质量评估 |
 | 技能自我诊断与优化 | [../shared/self-improvement.md](../shared/self-improvement.md) | 用户反馈响应、诊断遗漏分析、提示词优化方案生成 |
 
@@ -49,17 +44,14 @@
    ├── 角色对话 → [mode-c/character-dialogue.md](mode-c/character-dialogue.md)
    └── 章末钩子 → [mode-c/hook-techniques.md](mode-c/hook-techniques.md)
 4. 正文创作（严格遵循细纲）
-5. 自动校验 → 加载 [mode-c/auto-validation.md](mode-c/auto-validation.md)
-6. 字数不足 → 加载 [mode-c/content-expansion.md](mode-c/content-expansion.md)
+5. 完成后 → 输入 `诊断 第X章` 路由至模式E进行自动校验
 ```
 
 ---
 
 ## 条件触发机制
 
-> 各子功能模块按条件自动触发，避免全量加载导致注意力分散。
-
-### 写作时（自动触发）
+> v20.3起，正文生成后的诊断/校验/质量保障功能已迁移至模式E。写作时仅加载创作相关模块。
 
 ```
 用户输入"写正文"或"继续"
@@ -75,41 +67,24 @@
     │   └── 角色对话 → character-dialogue.md
     │   └── 章末钩子 → hook-techniques.md
     │
-    └── 4. 正文创作完成后，自动触发校验
-        └── 加载 [mode-c/auto-validation.md](mode-c/auto-validation.md)
-        └── 7维校验，自动修复（最多2轮）
+    └── 4. 正文创作完成
+        └── 建议输入 `诊断 第X章` 路由至模式E进行自动校验
 ```
 
-### 累积触发（按章节数自动触发）
+### 诊断路由（自动跳转至模式E）
 
-| 触发条件 | 加载模块 | 功能 |
-|---------|---------|------|
-| 每完成5章 | [mode-c/quality-assurance.md](mode-c/quality-assurance.md) | 跨章节自动校验修复闭环 |
-| 每完成10章 | [mode-c/style-fingerprint.md](mode-c/style-fingerprint.md) | 风格演化追踪 |
-| 每完成10章 | [mode-c/reader-retention.md](mode-c/reader-retention.md) | 弃书风险分析+追读意愿曲线 |
-| 每完成10章 | [mode-c/dashboard.md](mode-c/dashboard.md) | 质量趋势图 |
-| 每章完成（连续/批量模式） | [mode-c/dashboard.md](mode-c/dashboard.md) | 创作仪表板更新+趋势预警 |
+> 正文生成完成后，以下触发词将自动路由至模式E统一诊断中心：
 
-### 手动触发
+| 触发词 | 路由目标 | 功能 |
+|------|------|------|
+| `诊断 第X章` / `诊断正文` | 模式E → 正文诊断 → auto-validation.md | 7维自动校验 |
+| `字数检查` / `字数扩充` | 模式E → 正文诊断 → content-expansion.md | 字数诊断+扩充 |
+| `AB测试` / `检查过渡` / `跨章校验` | 模式E → 正文诊断 → quality-assurance.md | AB测试+过渡检测+跨章校验 |
+| `风格指纹` / `风格迁移 [目标]` | 模式E → 正文诊断 → style-fingerprint.md | 风格指纹+风格迁移 |
+| `留存预测` | 模式E → 正文诊断 → reader-retention.md | 留存率预测+弃书风险 |
+| `创作仪表板` | 模式E → 正文诊断 → dashboard.md | 创作实时仪表板 |
 
-| 触发词 | 加载模块 | 功能 |
-|--------|---------|------|
-| `AB测试` | [mode-c/quality-assurance.md](mode-c/quality-assurance.md) | 章节级AB测试 |
-| `检查过渡` | [mode-c/quality-assurance.md](mode-c/quality-assurance.md) | 智能章节过渡检测 |
-| `跨章校验` | [mode-c/quality-assurance.md](mode-c/quality-assurance.md) | 手动跨章节校验 |
-| `对比` `对比第X章` `对比分支` | [mode-c/version-management.md](mode-c/version-management.md) | 版本/分支对比 |
-| `回退` `清理版本` `保存版本` | [mode-c/version-management.md](mode-c/version-management.md) | 版本管理 |
-| `分支创作` `创建分支` `合并分支` | [mode-c/version-management.md](mode-c/version-management.md) | 分支创作 |
-| `创建快照` | [mode-c/version-management.md](mode-c/version-management.md) | 创作快照 |
-| `字数检查` | [mode-c/auto-validation.md](mode-c/auto-validation.md) | 手动触发校验 |
-| `风格指纹` | [mode-c/style-fingerprint.md](mode-c/style-fingerprint.md) | 查看当前风格指纹 |
-| `风格迁移 [目标]` | [mode-c/style-fingerprint.md](mode-c/style-fingerprint.md) | 风格迁移 |
-| `留存预测` | [mode-c/reader-retention.md](mode-c/reader-retention.md) | 查看留存率预测 |
-| `创作仪表板` | [mode-c/dashboard.md](mode-c/dashboard.md) | 查看实时仪表板 |
-| `读者视角` | [mode-c/reader-preview.md](mode-c/reader-preview.md) | 模拟读者阅读体验 |
-| `模拟评论` | [mode-c/reader-preview.md](mode-c/reader-preview.md) | 模拟读者评论生成 |
-| `子弹时间` | [mode-c/content-expansion.md](mode-c/content-expansion.md) | 关键时刻放慢技法 |
-| `重排章节` | [mode-c/writing-workflow.md](mode-c/writing-workflow.md) | 章节编号重排 |
+> 详细诊断能力参见 [模式E：统一诊断中心](mode-e-diagnostics.md)。
 
 ---
 
@@ -138,38 +113,16 @@ mode-c-writing.md (编排器)
     │   ├── 依赖：细纲悬念钩子
     │   └── 输出：章末钩子段落
     │
-    ├── auto-validation.md ─────────────────── 自动校验（每章后自动）
-    │   ├── 依赖：正文输出
-    │   └── 输出：校验报告
-    │
-    ├── content-expansion.md ───────────────── 内容扩充（字数不足时）
-    │   ├── 依赖：正文输出 + auto-validation字数检查
-    │   └── 输出：扩充后正文
-    │
-    ├── quality-assurance.md ───────────────── 质量保障（每5章自动）
-    │   ├── 依赖：最近5章正文+细纲
-    │   └── 输出：AB测试/过渡检测/跨章校验报告
-    │
     ├── version-management.md ──────────────── 版本管理（手动触发）
     │   ├── 依赖：章节文件
     │   └── 输出：版本对比/分支管理/快照
-    │
-    ├── style-fingerprint.md ───────────────── 风格指纹（每10章自动）
-    │   ├── 依赖：最近10章正文
-    │   └── 输出：风格指纹报告+演化追踪
-    │
-    ├── reader-retention.md ────────────────── 留存预测（每10章自动）
-    │   ├── 依赖：最近10章正文+质量指标
-    │   └── 输出：留存率预测+弃书风险+追读曲线
-    │
-    ├── dashboard.md ───────────────────────── 仪表板（连续/批量模式每章）
-    │   ├── 依赖：章节质量指标+进度数据
-    │   └── 输出：仪表板+趋势预警+质量趋势图
     │
     └── reader-preview.md ──────────────────── 读者视角（手动触发）
         ├── 依赖：当前章正文
         └── 输出：模拟阅读体验+模拟评论+质量维度评分
 ```
+
+> v20.3起，诊断/校验/质量保障模块（auto-validation/content-expansion/quality-assurance/style-fingerprint/reader-retention/dashboard）已迁移至模式E统一诊断中心。
 
 ---
 
@@ -213,35 +166,20 @@ chapter_output:
 
 ---
 
-## 质量自检流程
+## 质量自检（路由至模式E）
 
-```
-正文创作完成
-    ↓
-第一步：自动校验（自动）
-    └── 加载 [mode-c/auto-validation.md](mode-c/auto-validation.md)
-    └── 7维校验，自动修复（最多2轮）
-    ↓
-第二步：字数不足扩充（条件触发）
-    └── 字数<3500 → 加载 [mode-c/content-expansion.md](mode-c/content-expansion.md)
-    └── 诊断原因 → 选择技法 → 执行扩充 → 重新校验
-    ↓
-第三步：跨章节校验（每5章自动）
-    └── 加载 [mode-c/quality-assurance.md](mode-c/quality-assurance.md)
-    └── 5维连贯性校验，自动修复
-    ↓
-第四步：风格演化追踪（每10章自动）
-    └── 加载 [mode-c/style-fingerprint.md](mode-c/style-fingerprint.md)
-    └── 风格演化报告
-    ↓
-第五步：留存预测（每10章自动）
-    └── 加载 [mode-c/reader-retention.md](mode-c/reader-retention.md)
-    └── 弃书风险分析+追读意愿曲线
-    ↓
-第六步：质量趋势（每10章自动）
-    └── 加载 [mode-c/dashboard.md](mode-c/dashboard.md)
-    └── 质量趋势图+趋势预警
-```
+> v20.3起，正文质量自检流程已迁移至模式E统一诊断中心。正文生成后，输入 `诊断 第X章` 自动执行完整诊断流程。
+
+| 步骤 | 原模块 | 模式E路由 |
+|:---:|------|------|
+| 第一步 | 自动校验 | 模式E → 正文诊断 → auto-validation.md |
+| 第二步 | 字数不足扩充 | 模式E → 正文诊断 → content-expansion.md |
+| 第三步 | 跨章节校验（每5章） | 模式E → 正文诊断 → quality-assurance.md |
+| 第四步 | 风格演化追踪（每10章） | 模式E → 正文诊断 → style-fingerprint.md |
+| 第五步 | 留存预测（每10章） | 模式E → 正文诊断 → reader-retention.md |
+| 第六步 | 质量趋势（每10章） | 模式E → 正文诊断 → dashboard.md |
+
+> 详细诊断能力参见 [模式E：统一诊断中心](mode-e-diagnostics.md)。
 
 ---
 
@@ -262,7 +200,7 @@ chapter_output:
 
 ---
 
-> 💡 **下一步建议**：正文已完成，输入"继续"写下一章，或输入"诊断"检查本章质量
+> 💡 **下一步建议**：正文已完成。输入 `诊断 第X章` 进入模式E进行自动校验和质量诊断，或输入 `继续` 写下一章。
 
 ---
 
@@ -316,3 +254,14 @@ chapter_output:
 ---
 是否执行此修改？
 ```
+
+---
+
+## 版本历史
+
+| 版本 | 日期 | 变更内容 |
+|------|------|---------|
+| v20.0 | 2025-01 | 初始版本：正文创作、写作流程、场景技法、角色对话 |
+| v20.1 | 2025-03 | 新增章节开头技巧、悬念钩子分类、版本管理 |
+| v20.2 | 2025-06 | 新增自动校验、字数扩充、跨章校验、风格指纹、留存预测、读者预览、创作仪表板 |
+| v20.3 | 2025-12 | 诊断功能迁移至模式E统一诊断中心，精简为纯生成版，新增版本历史表 |

@@ -1,7 +1,8 @@
-# 模式B-2：细纲工程师
+# 模式B-2：细纲工程师（v20.3 纯生成版）
 
-> **所属**：novel-writer 核心能力库（模式B子模块） | **触发词**：`细纲`、`章节规划`、`拆解`、`联动优化`、`切换细纲模板`
+> **所属**：novel-writer 核心能力库（模式B子模块） | **触发词**：`细纲`、`章节规划`、`拆解`、`切换细纲模板`
 > **全局规则**：遵循主控文件第二章核心铁律
+> **架构变更**：v20.3起，细纲诊断/评估/优化功能已迁移至模式E。细纲生成后，输入 `诊断细纲` 或 `细纲评分` 自动路由至模式E。
 
 ---
 
@@ -12,14 +13,7 @@
 | 场景 | 加载文件 | 内容 |
 |------|---------|------|
 | 细纲核心输出 | [mode-b2/detailed-outline-core.md](mode-b2/detailed-outline-core.md) | 输出模板、撰写流程、冲突追踪、高潮/结局里程碑 |
-| 质量自动评分 | [mode-b2/quality-scoring.md](mode-b2/quality-scoring.md) | 5维评分体系、评分细则、批量评分汇总 |
-| 反向校验 | [mode-b2/reverse-verification.md](mode-b2/reverse-verification.md) | 细纲→大纲合规检查、8项校验、偏离处理 |
-| 反向补充 | [mode-b2/reverse-supplement.md](mode-b2/reverse-supplement.md) | 细纲→大纲缺口发现、补充方案生成 |
-| 联动优化 | [mode-b2/linkage-optimization.md](mode-b2/linkage-optimization.md) | 多章节爽点轮换、节奏检测、冲突节奏、高潮推进 |
 | 模板库 | [mode-b2/template-library.md](mode-b2/template-library.md) | 4类型模板、差异对比、自定义模板 |
-| 一致性检查 | [mode-b2/consistency-check.md](mode-b2/consistency-check.md) | 16项一致性检查、变更影响分析 |
-| 章节节奏控制 | [mode-b2/chapter-pacing.md](mode-b2/chapter-pacing.md) | 内部/外部冲突追踪、高潮铺垫、结局伏笔、节奏健康度 |
-| 大纲反向补充(共享) | [../shared/outline-supplement.md](../shared/outline-supplement.md) | 8维缺口检测、补充方案生成、批量诊断集成 |
 
 ---
 
@@ -46,49 +40,30 @@
 
 ## 条件触发机制
 
-> 各子功能模块按条件自动触发，避免全量加载导致注意力分散。
-
-### 细纲生成时（自动触发）
+> v20.3起，细纲生成后的诊断/评估/优化功能已迁移至模式E。细纲生成时仅加载核心输出模块。
 
 ```
 用户输入"细纲"或"章节规划"
     │
-    ├── 1. 加载 [mode-b2/detailed-outline-core.md](mode-b2/detailed-outline-core.md)
-    │   └── 按输出模板生成细纲，自动填充冲突追踪和高潮/结局里程碑
-    │
-    ├── 2. 细纲输出完成后，自动触发质量评分
-    │   └── 加载 [mode-b2/quality-scoring.md](mode-b2/quality-scoring.md)
-    │   └── 5维评分，低于阈值自动重写
-    │
-    ├── 3. 质量评分通过后，自动触发反向校验
-    │   └── 加载 [mode-b2/reverse-verification.md](mode-b2/reverse-verification.md)
-    │   └── 8项反向校验，严重偏离自动修正
-    │
-    └── 4. 自动触发一致性检查
-        └── 加载 [mode-b2/consistency-check.md](mode-b2/consistency-check.md)
-        └── 16项一致性检查，输出检查报告
+    └── 1. 加载 [mode-b2/detailed-outline-core.md](mode-b2/detailed-outline-core.md)
+        └── 按输出模板生成细纲，自动填充冲突追踪和高潮/结局里程碑
 ```
 
-### 累积触发（按章节数自动触发）
+### 诊断路由（自动跳转至模式E）
 
-| 触发条件 | 加载模块 | 功能 |
-|---------|---------|------|
-| 每完成5章细纲 | [mode-b2/linkage-optimization.md](mode-b2/linkage-optimization.md) | 多章节联动优化 |
-| 每完成10章细纲 | [mode-b2/reverse-supplement.md](mode-b2/reverse-supplement.md) | 大纲反向补充 |
-| 每完成10章细纲 | [mode-b2/chapter-pacing.md](mode-b2/chapter-pacing.md) | 节奏健康度评分 |
+> 细纲生成完成后，以下触发词将自动路由至模式E统一诊断中心：
 
-### 手动触发
+| 触发词 | 路由目标 | 功能 |
+|------|------|------|
+| `细纲评分` / `细纲评估` / `章节评分` | 模式E → 细纲诊断 → quality-scoring.md | 5维细纲质量评分 |
+| `反向校验` / `细纲校验` / `大纲对齐检查` | 模式E → 细纲诊断 → reverse-verification.md | 8项反向校验 |
+| `一致性检查` / `细纲自检` | 模式E → 细纲诊断 → consistency-check.md | 16项一致性检查 |
+| `联动优化` / `章节联动` / `节奏检测` | 模式E → 细纲诊断 → linkage-optimization.md | 5维联动优化 |
+| `大纲补充` / `反向补充大纲` / `细纲反馈大纲` | 模式E → 细纲诊断 → reverse-supplement.md | 大纲反向补充 |
+| `节奏检查` / `冲突追踪` / `里程碑检查` | 模式E → 细纲诊断 → chapter-pacing.md | 节奏健康度检查 |
+| `诊断细纲` | 模式E → 细纲诊断（全模块） | 完整细纲诊断流程 |
 
-| 触发词 | 加载模块 | 功能 |
-|--------|---------|------|
-| `细纲评分` `细纲评估` `章节评分` | [mode-b2/quality-scoring.md](mode-b2/quality-scoring.md) | 手动质量评分 |
-| `反向校验` `细纲校验` `大纲对齐检查` | [mode-b2/reverse-verification.md](mode-b2/reverse-verification.md) | 手动反向校验 |
-| `大纲补充` `反向补充大纲` `细纲反馈大纲` | [mode-b2/reverse-supplement.md](mode-b2/reverse-supplement.md) | 手动反向补充 |
-| `联动优化` `章节联动` `节奏检测` | [mode-b2/linkage-optimization.md](mode-b2/linkage-optimization.md) | 手动联动优化 |
-| `切换细纲模板 [类型]` `细纲模板` `查看模板` | [mode-b2/template-library.md](mode-b2/template-library.md) | 模板管理 |
-| `一致性检查` `细纲自检` | [mode-b2/consistency-check.md](mode-b2/consistency-check.md) | 手动一致性检查 |
-| `变更影响` `影响分析` | [mode-b2/consistency-check.md](mode-b2/consistency-check.md) | 变更影响分析 |
-| `节奏检查` `冲突追踪` `里程碑检查` | [mode-b2/chapter-pacing.md](mode-b2/chapter-pacing.md) | 节奏健康度检查 |
+> 详细诊断能力参见 [模式E：统一诊断中心](mode-e-diagnostics.md)。
 
 ---
 
@@ -101,34 +76,12 @@ mode-b2-detailed-outline.md (编排器)
     │   ├── 依赖：大纲模块(1-7)、前文章节细纲
     │   └── 输出：章节细纲
     │
-    ├── quality-scoring.md ─────────────────── 质量评分（细纲后自动）
-    │   ├── 依赖：detailed-outline-core.md 输出
-    │   └── 输出：评分报告
-    │
-    ├── reverse-verification.md ────────────── 反向校验（细纲后自动）
-    │   ├── 依赖：detailed-outline-core.md 输出 + 大纲模块(1-7)
-    │   └── 输出：偏离清单
-    │
-    ├── consistency-check.md ───────────────── 一致性检查（细纲后自动）
-    │   ├── 依赖：detailed-outline-core.md 输出 + 大纲模块(1-7)
-    │   └── 输出：检查报告 + 变更影响分析
-    │
-    ├── linkage-optimization.md ────────────── 联动优化（每5章自动）
-    │   ├── 依赖：最近5章细纲输出
-    │   └── 输出：联动优化报告
-    │
-    ├── reverse-supplement.md ──────────────── 反向补充（每10章自动）
-    │   ├── 依赖：shared/outline-supplement.md + 全部细纲
-    │   └── 输出：缺口清单 + 补充方案
-    │
-    ├── chapter-pacing.md ──────────────────── 节奏控制（每10章自动）
-    │   ├── 依赖：detailed-outline-core.md 冲突追踪字段 + 大纲1.2.1/6.1.1/6.1.2
-    │   └── 输出：节奏健康度评分 + 里程碑总览
-    │
     └── template-library.md ────────────────── 模板库（手动触发）
         ├── 依赖：detailed-outline-core.md 输出结构
         └── 输出：模板参数
 ```
+
+> v20.3起，诊断/评估/优化模块（quality-scoring/reverse-verification/consistency-check/linkage-optimization/reverse-supplement/chapter-pacing）已迁移至模式E统一诊断中心。
 
 ---
 
@@ -185,35 +138,20 @@ detailed_outline:
 
 ---
 
-## 细纲质量自检流程
+## 细纲质量自检（路由至模式E）
 
-```
-细纲输出完成
-    ↓
-第一步：质量自动评分（自动）
-    └── 加载 [mode-b2/quality-scoring.md](mode-b2/quality-scoring.md)
-    └── 5维评分，<7.0自动重写（最多2轮）
-    ↓
-第二步：反向校验（自动）
-    └── 加载 [mode-b2/reverse-verification.md](mode-b2/reverse-verification.md)
-    └── 8项反向校验，严重偏离自动修正
-    ↓
-第三步：一致性检查（自动）
-    └── 加载 [mode-b2/consistency-check.md](mode-b2/consistency-check.md)
-    └── 16项一致性检查，输出检查报告
-    ↓
-第四步：联动优化（每5章自动）
-    └── 加载 [mode-b2/linkage-optimization.md](mode-b2/linkage-optimization.md)
-    └── 5维联动检测，输出优化报告
-    ↓
-第五步：反向补充（每10章自动）
-    └── 加载 [mode-b2/reverse-supplement.md](mode-b2/reverse-supplement.md)
-    └── 8维缺口检测，生成补充方案
-    ↓
-第六步：节奏健康度（每10章自动）
-    └── 加载 [mode-b2/chapter-pacing.md](mode-b2/chapter-pacing.md)
-    └── 5维节奏评分，输出里程碑总览
-```
+> v20.3起，细纲质量自检流程已迁移至模式E统一诊断中心。细纲生成后，输入 `诊断细纲` 自动执行完整诊断流程。
+
+| 步骤 | 原模块 | 模式E路由 |
+|:---:|------|------|
+| 第一步 | 质量自动评分 | 模式E → 细纲诊断 → quality-scoring.md |
+| 第二步 | 反向校验 | 模式E → 细纲诊断 → reverse-verification.md |
+| 第三步 | 一致性检查 | 模式E → 细纲诊断 → consistency-check.md |
+| 第四步 | 联动优化（每5章） | 模式E → 细纲诊断 → linkage-optimization.md |
+| 第五步 | 反向补充（每10章） | 模式E → 细纲诊断 → reverse-supplement.md |
+| 第六步 | 节奏健康度（每10章） | 模式E → 细纲诊断 → chapter-pacing.md |
+
+> 详细诊断能力参见 [模式E：统一诊断中心](mode-e-diagnostics.md)。
 
 ---
 
@@ -234,4 +172,15 @@ detailed_outline:
 
 ---
 
-> 💡 **下一步建议**：细纲已生成，输入"写正文"开始创作，或输入"细纲"继续规划下一章
+> 💡 **下一步建议**：细纲已生成。输入 `诊断细纲` 进入模式E进行质量评分和一致性检查，或输入 `写正文` 开始创作，或输入 `细纲` 继续规划下一章。
+
+---
+
+## 版本历史
+
+| 版本 | 日期 | 变更内容 |
+|------|------|---------|
+| v20.0 | 2025-01 | 初始版本：章节细纲撰写、模板库 |
+| v20.1 | 2025-03 | 新增冲突追踪、高潮/结局里程碑 |
+| v20.2 | 2025-06 | 新增质量自动评分、反向校验、一致性检查、联动优化、反向补充、节奏控制 |
+| v20.3 | 2025-12 | 诊断功能迁移至模式E统一诊断中心，精简为纯生成版，新增版本历史表 |

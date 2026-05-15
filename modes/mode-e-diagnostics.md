@@ -1,24 +1,127 @@
-# 模式E：数据复盘师
+# 模式E：统一诊断中心（v20.3 中央集权版）
 
-> **所属**：novel-writer 核心能力库 | **触发词**：`诊断`、`复盘`、`去AI味`、`润色`、`优化`、`检查`、`修复`、`数据`、`统计`、`仪表板`、`进度`、`跨卷检测`、`节奏评分`、`节奏优化`、`状态`、`看板`、`模拟评论`、`读者视角`、`关系图`、`世界地图`、`时间线`、`爽点热力图`、`情绪曲线`、`大纲变更诊断`、`变更影响`、`平台标准评估`、`番茄标准`、`爆款对标`、`深度关联诊断`、`大纲覆盖度`、`大纲丰富度`、`联动修正`、`级联修正`、`关联修正`、`章节充实度`、`扩充必要性`、`大纲粒度`、`大纲细化`
+> **所属**：novel-writer 核心能力库 | **触发词**：`诊断`、`复盘`、`去AI味`、`润色`、`优化`、`检查`、`修复`、`数据`、`统计`、`仪表板`、`进度`、`跨卷检测`、`节奏评分`、`节奏优化`、`状态`、`看板`、`模拟评论`、`读者视角`、`关系图`、`世界地图`、`时间线`、`爽点热力图`、`情绪曲线`、`大纲变更诊断`、`变更影响`、`平台标准评估`、`番茄标准`、`爆款对标`、`深度关联诊断`、`大纲覆盖度`、`大纲丰富度`、`联动修正`、`级联修正`、`关联修正`、`章节充实度`、`扩充必要性`、`大纲粒度`、`大纲细化`、`大纲评分`、`大纲评估`、`设定检测`、`完整性检查`、`细纲评分`、`细纲评估`、`章节评分`、`反向校验`、`细纲校验`、`大纲对齐检查`、`一致性检查`、`细纲自检`、`联动优化`、`章节联动`、`节奏检测`、`大纲补充`、`反向补充大纲`、`细纲反馈大纲`、`节奏检查`、`冲突追踪`、`里程碑检查`、`字数检查`、`风格指纹`、`风格迁移`、`留存预测`、`创作仪表板`、`AB测试`、`检查过渡`、`版本对比`、`模拟评论`、`读者视角`、`大纲缺口检测`、`大纲完整性检查`
 > **全局规则**：遵循主控文件第二章核心铁律
+> **架构变更**：v20.3起，所有诊断/优化功能统一收归模式E。模式B/B-2/C仅保留纯生成功能，诊断入口自动路由至模式E。
+
+---
+
+## 功能菜单（三级诊断体系）
+
+> 模式E加载后自动展示以下功能菜单。所有诊断能力按对象分为三级，支持按需深入。
+
+### 一级：按诊断对象
+
+| 编号 | 诊断对象 | 说明 | 适用阶段 |
+|:---:|------|------|------|
+| ① | **大纲诊断** | 大纲质量评估、设定完整性检测、大纲深度诊断 | 大纲生成后 |
+| ② | **细纲诊断** | 质量评分、反向校验、一致性检查、联动优化、反向补充、节奏控制 | 细纲生成后 |
+| ③ | **正文诊断** | 自动校验、质量保障、风格指纹、留存预测、字数扩充、创作仪表板 | 正文生成后 |
+
+### 二级：按诊断范围
+
+| 编号 | 诊断范围 | 说明 | 触发方式 |
+|:---:|------|------|------|
+| ④ | **14维全面诊断** | 对指定章节执行完整14维深度诊断 | 输入 `诊断 第X章` |
+| ⑤ | **批量诊断修复** | 细纲/正文逐章批量诊断，P0/P1自动修复 | 输入 `批量诊断` |
+| ⑥ | **跨卷节奏检测** | 跨卷连续性检测+章节节奏自动评分 | 输入 `跨卷检测` |
+
+### 三级：综合工具
+
+| 编号 | 工具 | 说明 | 触发方式 |
+|:---:|------|------|------|
+| ⑦ | **统一创作仪表板** | 合并大纲/细纲/正文的全维度数据看板+风险预警 | 输入 `仪表板` |
+| ⑧ | **读者模拟可视化** | 3类读者评论模拟+关系图/热力图/情绪曲线 | 输入 `模拟评论` |
 
 ---
 
 ## 子模块索引
 
-> 以下子模块按需加载，避免单文件过长。
+> 以下子模块按需加载，避免单文件过长。v20.3起按诊断对象分目录管理。
+
+### 大纲诊断子模块（outline-diagnostics/）
 
 | 场景 | 加载文件 | 内容 |
 |------|---------|------|
-| 数据统计/进度追踪/可视化看板 | [mode-e/dashboard.md](mode-e/dashboard.md) | 7模块数据分析仪表板+可视化状态面板 |
-| 诊断维度详解/大纲一致性/毒点排查/人物关系过渡/角色身份交代/神秘感悬念/世界观展开/人物群像/爽点质量/前期铺垫 | [mode-e/diagnosis-details.md](mode-e/diagnosis-details.md) | 14维诊断+大纲一致性+毒点排查+人物关系过渡+角色身份交代+神秘感悬念+世界观展开+人物群像+爽点质量+前期铺垫+读者视角模拟 |
-| 跨卷检测/节奏评分 | [mode-e/cross-volume-rhythm.md](mode-e/cross-volume-rhythm.md) | 跨卷连续性检测+章节节奏自动评分与优化 |
-| 读者模拟/多模态可视化 | [mode-e/reader-visualization.md](mode-e/reader-visualization.md) | 读者评论模拟+关系图/世界地图/时间线/热力图/情绪曲线 |
+| 大纲质量量化评估 | [mode-e/outline-diagnostics/outline-evaluation.md](mode-e/outline-diagnostics/outline-evaluation.md) | 4维大纲评分（A-D维度，S-F评级） |
+| 基础设定完整性检测 | [mode-e/outline-diagnostics/setting-detection.md](mode-e/outline-diagnostics/setting-detection.md) | 13项基础设定检测（P0/P1分级） |
+| 大纲-剧情深度诊断与联动修正 | [mode-e/outline-plot-deep-diagnosis.md](mode-e/outline-plot-deep-diagnosis.md) | 大纲变更自动触发剧情诊断、番茄平台爆款标准评估、大纲深度关联丰富、跨章节联动修正 |
+
+### 细纲诊断子模块（detailed-outline-diagnostics/）
+
+| 场景 | 加载文件 | 内容 |
+|------|---------|------|
+| 细纲质量自动评分 | [mode-e/detailed-outline-diagnostics/quality-scoring.md](mode-e/detailed-outline-diagnostics/quality-scoring.md) | 5维细纲评分（事件/爽点/伏笔/字数/对齐），<7.0自动重写 |
+| 细纲→大纲反向校验 | [mode-e/detailed-outline-diagnostics/reverse-verification.md](mode-e/detailed-outline-diagnostics/reverse-verification.md) | 8项反向校验（境界/道具/关系/势力/地图/冲突/高潮/结局） |
+| 一致性检查与变更影响 | [mode-e/detailed-outline-diagnostics/consistency-check.md](mode-e/detailed-outline-diagnostics/consistency-check.md) | 16项一致性检查+变更影响分析 |
+| 多章节联动优化 | [mode-e/detailed-outline-diagnostics/linkage-optimization.md](mode-e/detailed-outline-diagnostics/linkage-optimization.md) | 5维联动检测（爽点轮换/节奏单调/信息密度/冲突节奏/高潮推进） |
+| 细纲→大纲反向补充 | [mode-e/detailed-outline-diagnostics/reverse-supplement.md](mode-e/detailed-outline-diagnostics/reverse-supplement.md) | 细纲→大纲缺口发现+补充方案生成 |
+| 章节节奏控制 | [mode-e/detailed-outline-diagnostics/chapter-pacing.md](mode-e/detailed-outline-diagnostics/chapter-pacing.md) | 冲突/高潮/结局节奏健康度追踪 |
+
+### 正文诊断子模块（writing-diagnostics/）
+
+| 场景 | 加载文件 | 内容 |
+|------|---------|------|
+| 自动校验闭环 | [mode-e/writing-diagnostics/auto-validation.md](mode-e/writing-diagnostics/auto-validation.md) | 7维自动校验（字数/禁忌词/元数据/钩子/五感/心理/文风） |
+| 质量保障体系 | [mode-e/writing-diagnostics/quality-assurance.md](mode-e/writing-diagnostics/quality-assurance.md) | AB测试+章节过渡检测+跨章节校验 |
+| 风格指纹系统 | [mode-e/writing-diagnostics/style-fingerprint.md](mode-e/writing-diagnostics/style-fingerprint.md) | 6维风格指纹提取+实时监控+风格迁移+演化追踪 |
+| 读者留存预测 | [mode-e/writing-diagnostics/reader-retention.md](mode-e/writing-diagnostics/reader-retention.md) | 留存率预测+弃书风险定位+追读意愿曲线 |
+| 字数不足扩充 | [mode-e/writing-diagnostics/content-expansion.md](mode-e/writing-diagnostics/content-expansion.md) | 字数诊断→原因分析→技法选择→执行扩充 |
+
+### 综合诊断子模块（mode-e/）
+
+| 场景 | 加载文件 | 内容 |
+|------|---------|------|
+| 14维诊断维度详解 | [mode-e/diagnosis-details.md](mode-e/diagnosis-details.md) | 14维诊断+大纲一致性+毒点排查+人物关系过渡+角色身份交代+神秘感悬念+世界观展开+人物群像+爽点质量+前期铺垫+读者视角模拟 |
 | 批量自动诊断+修复 | [mode-e/batch-auto-fix.md](mode-e/batch-auto-fix.md) | 细纲/正文逐章批量诊断、P0/P1自动修复、仅诊断模式、混合批量诊断、大纲反向补充 |
+| 跨卷检测/节奏评分 | [mode-e/cross-volume-rhythm.md](mode-e/cross-volume-rhythm.md) | 跨卷连续性检测+章节节奏自动评分与优化 |
+| 统一创作仪表板 | [mode-e/dashboard.md](mode-e/dashboard.md) | 7模块数据分析+实时创作仪表板+可视化状态面板+趋势预警+质量趋势图 |
+| 读者模拟/多模态可视化 | [mode-e/reader-visualization.md](mode-e/reader-visualization.md) | 读者评论模拟+关系图/世界地图/时间线/热力图/情绪曲线 |
+
+### 共享模块
+
+| 场景 | 加载文件 | 内容 |
+|------|---------|------|
 | 大纲反向补充 | [shared/outline-supplement.md](../shared/outline-supplement.md) | 细纲→大纲缺口识别、7大模块补充方案生成、自动/手动补充 |
 | 技能自我诊断与优化 | [shared/self-improvement.md](../shared/self-improvement.md) | 诊断遗漏分析、提示词优化方案生成、用户确认后自动修改 |
-| 大纲-剧情深度诊断与联动修正 | [mode-e/outline-plot-deep-diagnosis.md](mode-e/outline-plot-deep-diagnosis.md) | 大纲变更自动触发剧情诊断、番茄平台爆款标准评估、大纲深度关联丰富、跨章节联动修正 |
+
+---
+
+## 统一数据总线
+
+> v20.3新增：各诊断子模块的数据通过统一数据总线互通，消除数据孤岛。
+
+```
+诊断数据流（统一数据总线）：
+
+大纲诊断数据 ──→ 细纲诊断可引用大纲约束 ──→ 正文诊断可引用细纲规划
+     │                    │                          │
+     ├─ 大纲评分          ├─ 细纲评分                ├─ 自动校验结果
+     ├─ 设定完整性        ├─ 反向校验结果            ├─ 风格指纹数据
+     └─ 大纲深度诊断      ├─ 一致性检查结果          ├─ 留存预测数据
+                          ├─ 联动优化结果            ├─ AB测试偏好
+                          ├─ 反向补充方案            └─ 字数趋势
+                          └─ 节奏健康度
+     └────────────────────┴──────────────────────────┘
+                          │
+                    模式E统一仪表板
+                    （合并大纲/细纲/正文全维度数据）
+                          │
+                    模式E统一评分卡
+                    （大纲/细纲/正文质量趋势一览）
+```
+
+### 数据互通规则
+
+| 数据生产者 | 数据消费者 | 互通内容 |
+|------|------|------|
+| 大纲诊断（outline-evaluation） | 细纲诊断（consistency-check） | 大纲评分结果→细纲一致性检查基准 |
+| 大纲诊断（setting-detection） | 14维诊断（diagnosis-details） | 设定完整性数据→维度九基础设定完整性 |
+| 细纲诊断（quality-scoring） | 正文诊断（auto-validation） | 细纲评分→正文创作质量预期 |
+| 细纲诊断（reverse-verification） | 14维诊断（diagnosis-details） | 反向校验结果→维度五大纲一致性 |
+| 正文诊断（style-fingerprint） | 14维诊断（diagnosis-details） | 风格指纹数据→维度三写作质量 |
+| 正文诊断（reader-retention） | 批量诊断（batch-auto-fix） | 弃书风险定位→批量修复优先级排序 |
+| 所有诊断子模块 | 统一仪表板（dashboard） | 全维度评分数据→统一可视化 |
 
 ---
 
@@ -307,7 +410,7 @@
 
 ---
 
-> 💡 **下一步建议**：诊断报告已生成，按P0→P1→P2→P3优先级修复问题
+> 💡 **下一步建议**：诊断报告已生成，按P0→P1→P2→P3优先级修复问题。可使用 `批量诊断` 对多章节执行自动诊断修复，或使用 `仪表板` 查看全维度质量趋势。
 
 ---
 
@@ -431,3 +534,14 @@
 ---
 是否需要执行以上优化方案？
 ```
+
+---
+
+## 版本历史
+
+| 版本 | 日期 | 变更内容 |
+|------|------|---------|
+| v20.0 | 2025-01 | 初始版本：14维诊断、跨卷节奏、读者模拟 |
+| v20.1 | 2025-03 | 新增批量自动诊断修复、大纲-剧情深度诊断与联动修正 |
+| v20.2 | 2025-06 | 新增统一仪表板、大纲诊断（大纲评分+设定检测）、细纲诊断（评分+校验+一致性+联动+补充+节奏）、正文诊断（校验+扩充+跨章+风格+留存） |
+| v20.3 | 2025-12 | 重构为统一诊断中心：三级诊断体系、统一数据总线、诊断功能从模式B/B-2/C集中迁移、仪表板合并、新增版本历史表 |
