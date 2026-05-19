@@ -50,7 +50,7 @@
     "lastPosition": "第42章结尾",
     "lastScene": "主角刚突破金丹期，正在稳固境界",
     "nextChapterPlan": "第43章：宗门来人",
-    "projectPath": "./正文/",
+    "projectPath": "./",
     "lastUpdateTime": "2026-05-12T14:30:00",
     "pendingHooks": ["宗门长老的真实身份", "秘境钥匙的下落"],
     "characterStates": {

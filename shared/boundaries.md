@@ -124,7 +124,7 @@ Step 6: 包装发布（模式D）→ 输入大纲+正文 → 输出书名方案+
       "lastAction": "完成第42章正文创作",
       "pendingAction": "等待用户确认是否继续第43章"
     },
-    "projectPath": "./正文/",
+    "projectPath": "./",
     "timestamp": "2026-05-12T14:30:00"
   }
 }
