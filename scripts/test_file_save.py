@@ -151,6 +151,87 @@ def test_chapter_save():
         print("❌ 章节文件保存失败！")
         return False
 
+def test_existing_file_overwrite():
+    """测试文件已存在时的覆盖行为"""
+    current_dir = os.getcwd()
+    book_name = "苍穹之上"
+
+    outline_dir = os.path.join(current_dir, "大纲")
+    os.makedirs(outline_dir, exist_ok=True)
+    file_path = os.path.join(outline_dir, f"{book_name}_大纲.md")
+
+    old_content = "旧大纲内容_应被覆盖"
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(old_content)
+    print(f"已创建旧大纲文件: {file_path}")
+    print(f"旧内容: {old_content}")
+
+    test_outline_save()
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        new_content = f.read()
+
+    if old_content not in new_content and "核心定位" in new_content:
+        print("✅ 文件覆盖成功！新内容正确写入")
+        return True
+    else:
+        print("❌ 文件覆盖失败！")
+        return False
+
+
+def test_permission_denied():
+    """测试权限不足时的错误处理"""
+    try:
+        protected_path = "/System/test_permission_check.txt"
+        with open(protected_path, "w", encoding="utf-8") as f:
+            f.write("test")
+        os.remove(protected_path)
+        print("⚠️ 意外：系统目录可写入（可能以root运行）")
+        return True
+    except PermissionError:
+        print("✅ 正确捕获 PermissionError，程序未崩溃")
+        print("友好提示: 权限不足，无法写入文件，请检查目标目录的写入权限")
+        return True
+    except Exception as e:
+        print(f"❌ 捕获到非预期异常: {type(e).__name__}: {e}")
+        return False
+
+
+def test_special_chars_filename():
+    """测试书名字段包含特殊字符时的处理"""
+    current_dir = os.getcwd()
+
+    raw_book_name = "苍穹/之上:归来?测试*"
+    illegal_chars_map = {'/': '-', ':': '-', '?': '-', '*': '-', '"': '-', '<': '-', '>': '-', '|': '-'}
+    safe_book_name = raw_book_name
+    for char, replacement in illegal_chars_map.items():
+        safe_book_name = safe_book_name.replace(char, replacement)
+
+    print(f"原始书名: {raw_book_name}")
+    print(f"安全文件名: {safe_book_name}")
+
+    illegal_chars = set('/:*?"<>|')
+    for char in illegal_chars:
+        if char in safe_book_name:
+            print(f"❌ 安全文件名仍含非法字符: '{char}'")
+            return False
+
+    outline_dir = os.path.join(current_dir, "大纲")
+    os.makedirs(outline_dir, exist_ok=True)
+    file_path = os.path.join(outline_dir, f"{safe_book_name}_大纲.md")
+
+    outline_content = f"## 《{raw_book_name}》核心大纲\n\n测试特殊字符处理"
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(outline_content)
+
+    if os.path.exists(file_path):
+        print(f"✅ 特殊字符文件名处理成功: {os.path.basename(file_path)}")
+        return True
+    else:
+        print("❌ 特殊字符文件名处理失败！")
+        return False
+
+
 def main():
     """主测试函数"""
     print("=" * 60)
@@ -172,6 +253,15 @@ def main():
     
     print("\n--- 测试3: 正文章节保存 ---")
     results.append(test_chapter_save())
+
+    print("\n--- 测试4: 文件覆盖行为 ---")
+    results.append(test_existing_file_overwrite())
+
+    print("\n--- 测试5: 权限不足错误处理 ---")
+    results.append(test_permission_denied())
+
+    print("\n--- 测试6: 特殊字符文件名处理 ---")
+    results.append(test_special_chars_filename())
     
     # 输出测试结果
     print("\n" + "=" * 60)

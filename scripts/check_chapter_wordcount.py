@@ -40,7 +40,7 @@ def count_total_chars(text):
 def analyze_dialogue_ratio(text):
     """分析对话占比"""
     dialogue_lines = re.findall(r'"[^"]*"', text)
-    dialogue_lines += re.findall(r'"[^"]*"', text)
+    dialogue_lines += re.findall(r"'[^']*'", text)
     dialogue_lines += re.findall(r'「[^」]*」', text)
     dialogue_chars = sum(len(re.findall(r'[\u4e00-\u9fff]', d)) for d in dialogue_lines)
     total_chinese = count_chinese_chars(text)
