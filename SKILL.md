@@ -85,6 +85,9 @@ metadata:
 | 大纲反向补充 | [shared/outline-supplement.md](shared/outline-supplement.md) | 细纲→大纲缺口识别、7大模块补充方案生成、自动/手动补充 |
 | 接口规范 | [shared/interface-specs.md](shared/interface-specs.md) | 编排器与子模块间标准I/O schema、错误处理规范、版本兼容性 |
 | 字数检查脚本 | [scripts/check_chapter_wordcount.py](scripts/check_chapter_wordcount.py) | Python章节字数检查脚本，支持JSON输出和详细分析 |
+| 情感描写增强 | [shared/emotion-spectrum.md](shared/emotion-spectrum.md) | 7级情感强度光谱、12种核心情感类型、催泪/燃点场景设计 |
+| 通感写作技法 | [shared/synesthesia-techniques.md](shared/synesthesia-techniques.md) | 五感体系、8种通感转换技法、多感官联动描写 |
+| 长篇创作支持 | [shared/long-form-support.md](shared/long-form-support.md) | 创意刷新工作坊、叙事疲劳检测、长篇结构规划、伏笔管理 |
 
 ---
 
