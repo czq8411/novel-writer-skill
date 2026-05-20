@@ -119,6 +119,7 @@
 | 钩子技巧 | [mode-c/hook-techniques.md](mode-c/hook-techniques.md) | 悬念钩子、强度检查 |
 | 版本管理 | [mode-c/version-management.md](mode-c/version-management.md) | 版本对比、分支创作 |
 | 读者预览 | [mode-c/reader-preview.md](mode-c/reader-preview.md) | 模拟阅读、质量评估 |
+| 复合技法 | [mode-c/cross-techniques.md](mode-c/cross-techniques.md) | 复合技法交叉联动指南 |
 
 ---
 
@@ -162,6 +163,17 @@
 - [ ] 钩子有力：章末300字有悬念/危机/反转？
 - [ ] 移动端适配：每段≤3行？对话独立成段？
 - [ ] 前文衔接：场景、状态、钩子自然承接？
+
+---
+
+## 六、写作规则
+
+### 转折合理性检查
+每个情节转折必须通过以下验证：
+- [ ] 转折在前文是否有至少1处伏笔/铺垫？
+- [ ] 转折后果是否在后续剧情中有量化体现？
+- [ ] 转折是否改变了至少一个角色的处境/认知/关系？
+- [ ] 转折后读者是否会感到"原来如此"而非"莫名其妙"？
 
 ---
 
