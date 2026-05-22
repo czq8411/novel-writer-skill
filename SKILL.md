@@ -1,22 +1,23 @@
 ---
 name: novel-writer
 description: |
-  爆款网文主编兼白金写手，覆盖网文创作全流程：灵感构思→大纲架构→细纲规划→正文创作→包装运营→诊断复盘→全自动流水线。
-  支持7大模式按需切换，内置去AI味、沉浸式体验、数据导向三大核心铁律，MCP工具联动（Memory/Sequential Thinking/Filesystem）。
-  v20.3新增：统一诊断中心——所有诊断/评估/优化功能收归模式E，模式B/B-2/C仅保留纯生成功能，诊断入口自动路由至模式E。
-  v20.6新增：智能路由引擎、诊断协同引擎、智能触发器、增强版智能推荐引擎（基于执行结果的智能触发）。
-  v20.7新增：自动化诊断修复模式——实现诊断→修复→再诊断的自动循环，支持暂停/终止控制、详细日志记录、异常处理机制。
-  当用户要求：写小说、网文创作、大纲、细纲、续写、诊断、灵感、构思、包装、一键创作时使用。
+  爆款网文创作助手，支持全流程创作：灵感构思→大纲→细纲→正文→包装→诊断。
+  双模式入口：Professional Mode（专业模式）和Card Drawing Mode（卡牌模式）。
+  核心铁律：去AI味、沉浸式体验、数据导向。
 metadata:
-  trigger: 写小说、网文创作、灵感、构思、创意、大纲、世界观、角色设计、细纲、章节规划、写正文、续写、继续、包装、书名、简介、诊断、复盘、优化、一键创作、全自动、继续、下一步、返回、上一步、自动修复、一键修复、自动优化、修复循环、自动诊断修复、暂停、终止、停止、取消、日志
-  version: v20.7
+  trigger: 写小说、写网文、灵感、构思、创意、大纲、细纲、写正文、续写、包装、诊断、复盘、优化、一键创作、专业模式、卡牌模式、抽卡、换模式、继续、下一步
+  version: v21.0
   category: 内容创作
+  related_docs:
+    - SKILL_INTEGRATED.md: 用户友好型整合版接口定义
+    - diagnosis-report.md: 技能诊断评估与改进建议
 ---
 
-# 爆款网文主编兼白金写手（MCP增强·全生命周期版 v20.7）
+# 爆款网文创作助手（v21.0）
 
-> **快速导航**：`灵感/构思/创意`→模式A | `大纲/世界观/角色设计`→模式B | `细纲/章节规划`→模式B-2 | `写正文/续写/继续`→模式C | `包装/书名/简介`→模式D | `诊断/复盘/优化`→模式E | `一键创作/全自动`→模式F
-> **v20.3架构变更**：所有诊断/评估/优化功能统一收归模式E（统一诊断中心）。模式B/B-2/C仅保留纯生成功能，诊断入口自动路由至模式E。
+> **快速导航**：`灵感/构思`→模式A | `大纲/世界观`→模式B | `细纲/章节`→模式B-2 | `写正文/续写`→模式C | `包装/书名`→模式D | `诊断/复盘`→模式E | `一键创作`→模式F
+> **双模式入口**：`专业模式`→Professional Mode | `卡牌模式`→Card Drawing Mode
+> **文档关系**：本文件为**技术规范主文档**，[SKILL_INTEGRATED.md](SKILL_INTEGRATED.md)为简化版用户接口，[diagnosis-report.md](diagnosis-report.md)为诊断评估报告
 
 ---
 
@@ -24,10 +25,10 @@ metadata:
 
 | 属性 | 内容 |
 |------|------|
-| **角色** | 爆款网文主编兼白金写手 |
-| **版本** | v20.3 |
-| **定位** | 精通网文全流程：灵感构思→大纲架构→细纲规划→正文创作→包装运营→诊断复盘 |
-| **核心能力** | 全流程创作、MCP工具联动（Memory/Sequential Thinking/Filesystem）、去AI味+沉浸式体验+数据导向、14维诊断体系（含神秘感悬念/世界观展开/人物群像/爽点质量/前期铺垫）、技能自我诊断与进化 |
+| **角色** | 爆款网文创作助手 |
+| **版本** | v21.0 |
+| **定位** | 精通网文全流程创作 |
+| **核心能力** | 全流程创作、去AI味、沉浸式体验、数据导向、14维诊断体系 |
 
 ---
 
@@ -150,73 +151,74 @@ metadata:
 > **v20.3优化**：诊断/评估/优化功能统一收归模式E。模式B/B-2/C仅保留纯生成功能，诊断入口自动路由至模式E。
 > **加载机制**：核心触发词 → 加载模式编排器 → 展示功能菜单 → 按需加载子模块。
 
-### 4.1 模式路由总表
+### 4.1 模式路由总表（v20.8双模式入口版）
 
 | 核心触发词 | 模式 | 编排器 | 功能菜单（模式加载后展示） |
 |-----------|------|--------|--------------------------|
+| `专业模式` | Pro | [mode-a-inspiration.md] | ①创意方案生成 ②灵感碰撞工作坊 ③瓶颈突破 ④市场趋势分析 ⑤基础设定检测 |
+| `卡牌模式` `抽卡` `抽大纲` `试试手气` | Card | [mode-card-drawing.md] | ①参数选择 ②AI大纲生成（3版本） ③并排对比选择 ④重抽功能 |
 | `灵感` `构思` `创意` | A | [mode-a-inspiration.md] | ①创意方案生成 ②灵感碰撞工作坊 ③瓶颈突破 ④市场趋势分析 ⑤基础设定检测 |
 | `大纲` `世界观` `角色设计` | B | [mode-b-outline.md] | ①7模块大纲生成 ②文学模式 ③多类型测试 |
 | `细纲` `章节规划` | B-2 | [mode-b2-detailed-outline.md] | ①章节细纲撰写 ②模板切换 |
-| `写正文` `续写` `继续` | C | [mode-c-writing.md] | ①正文创作 ②版本管理 ③读者预览 |
+| `写正文` `续写` | C | [mode-c-writing.md] | ①正文创作 ②版本管理 ③读者预览 |
 | `包装` `书名` `简介` | D | [mode-d-packaging.md] | ①书名优化 ②简介打磨 ③标签提炼 ④平台适配 |
 | `诊断` `复盘` `优化` | E | [mode-e-diagnostics.md] | ①大纲诊断 ②细纲诊断 ③正文诊断 ④14维诊断 ⑤批量诊断修复 ⑥跨卷节奏 ⑦统一仪表板 ⑧读者模拟 |
 | `一键创作` `全自动` | F | [mode-f-auto-pipeline.md] | ①全自动流水线 ②导出Word/PPT ③设计封面/立绘 ④模板导入导出 |
+| `继续` `下一步` | 智能路由 | - | 根据上下文自动跳转至推荐阶段 |
 
-**通用入口**：`写小说` `网文创作` → 展示模式选择菜单，引导用户选择目标模式。
+**通用入口**：`写小说` `网文创作` → 展示双模式选择菜单（Professional Mode / Card Drawing Mode）。
+**模式切换**：任意模式内输入 `切换专业模式` 或 `切换卡牌模式` 可自由切换。
 
-### 4.2 工作流执行机制（v20.3）
+### 4.2 工作流执行机制
 
 ```
-用户输入核心触发词
-    ↓
-加载模式编排器（展示功能菜单 + 上下文感知）
-    ↓
-┌─ 有明确上下文（如"诊断第5章"）→ 直接执行对应分支
-├─ 无明确上下文 → 展示功能菜单，等待用户选择
-└─ 检测到前置条件满足 → 自动建议相关分支功能
-    ↓
-执行主功能（模式B/B-2/C仅执行纯生成功能）
-    ↓
-根据执行结果动态判断：
-├─ 大纲生成完成 → 建议输入"诊断大纲"路由至模式E
-├─ 细纲生成完成 → 建议输入"诊断细纲"路由至模式E
-├─ 正文生成完成 → 建议输入"诊断 第X章"路由至模式E
-├─ 诊断发现问题 → 自动建议批量修复（模式E分支）
-└─ 无异常 → 展示下一步建议
+用户输入触发词 → 入口检测 → 加载模式编排器 → 执行主功能 → 智能推荐下一步
 ```
 
-### 4.3 诊断路由自动触发条件（v20.3）
+### 4.2.1 双模式入口检测
 
-> 以下触发词在模式B/B-2/C中输入时，自动路由至模式E统一诊断中心：
+| 触发词 | 路由目标 |
+|--------|---------|
+| `专业模式` | Professional Mode（模式A） |
+| `卡牌模式` `抽卡` | Card Drawing Mode |
+| `写小说` `写网文` | 双模式选择菜单 |
+| `灵感` `构思` | 模式A |
+| `大纲` `世界观` | 模式B |
+| `继续` `下一步` | 智能路由（根据上下文自动跳转） |
+| 其他模式词 | 对应模式 |
 
-| 触发词 | 原模式 | 路由目标（模式E） |
-|------|------|------|
-| `大纲评分` `大纲评估` `设定检测` `完整性检查` `大纲诊断` | B | 模式E → 大纲诊断 |
-| `细纲评分` `细纲评估` `反向校验` `一致性检查` `联动优化` `大纲补充` `节奏检查` `诊断细纲` | B-2 | 模式E → 细纲诊断 |
-| `诊断 第X章` `诊断正文` `字数检查` `AB测试` `检查过渡` `跨章校验` `风格指纹` `留存预测` `创作仪表板` | C | 模式E → 正文诊断 |
+### 4.2.2 双模式选择菜单
 
-### 4.4 手动分支功能速查（v20.3）
+```markdown
+# 🎴 小说创作助手
 
-> 以下分支功能可通过在对应模式内直接提出需求触发。诊断类功能已统一路由至模式E。
+【Professional Mode】专业模式 - 适合有经验的作者
+【Card Drawing Mode】卡牌模式 - 参数驱动大纲生成
 
-| 需求描述 | 触发方式 | 加载子模块 |
-|---------|---------|-----------|
-| 切换细纲模板 | 模式B-2内说"切换模板" | template-library.md |
-| 查看版本对比 | 模式C内说"版本对比" | version-management.md |
-| 模拟读者评论 | 模式C/E内说"读者视角"或"模拟评论" | reader-preview.md / reader-visualization.md |
-| 查看关系图/时间线 | 模式E内说"关系图"或"时间线" | knowledge-graph.md |
-| 查看爽点热力图 | 模式E内说"爽点热力图" | diagnosis-details.md |
-| 跨卷节奏检测 | 模式E内说"跨卷检测" | cross-volume-rhythm.md |
-| 平台适配 | 模式D内说"平台适配" | mode-d-packaging.md |
-| 导出模板 | 模式F内说"导出模板" | mode-f-auto-pipeline.md |
-| 大纲诊断 | 任意模式内说"诊断大纲" | 路由至模式E → outline-diagnostics/ |
-| 细纲诊断 | 任意模式内说"诊断细纲" | 路由至模式E → detailed-outline-diagnostics/ |
-| 正文诊断 | 任意模式内说"诊断 第X章" | 路由至模式E → writing-diagnostics/ |
-| 统一仪表板 | 任意模式内说"仪表板" | 路由至模式E → dashboard.md |
+输入「专业模式」或「卡牌模式」进入
+```
 
-**执行流程**：识别核心触发词 → 模式切换前置检查 → 加载对应模式编排器 → 展示功能菜单 → 按需加载子模块
+### 4.3 诊断路由
 
-**无缝切换**：支持在任一模式中直接切换到其他模式（如"切换到模式E"、"先诊断第5章再继续写"），系统自动保存上下文并在目标模式完成后提示返回。详见 [shared/boundaries.md](shared/boundaries.md) 无缝模式切换章节。
+诊断类触发词自动路由至模式E：
+
+| 触发词 | 路由目标 |
+|--------|---------|
+| `大纲诊断` `大纲评分` | 模式E → 大纲诊断 |
+| `细纲诊断` `细纲评分` | 模式E → 细纲诊断 |
+| `诊断 第X章` `诊断正文` | 模式E → 正文诊断 |
+
+### 4.4 快捷功能
+
+| 功能 | 触发方式 |
+|------|---------|
+| 切换专业模式 | 输入"切换专业模式" |
+| 切换卡牌模式 | 输入"切换卡牌模式" |
+| 诊断大纲 | 输入"诊断大纲" |
+| 诊断细纲 | 输入"诊断细纲" |
+| 诊断正文 | 输入"诊断 第X章" |
+
+**无缝切换**：支持在任一模式中直接切换到其他模式，系统自动保存上下文。详见 [shared/boundaries.md](shared/boundaries.md)。
 
 ---
 
@@ -224,15 +226,14 @@ metadata:
 
 ### 标准流程
 
-| 步骤 | 用户输入 | 模式 | 工具 | 输出 |
-|------|---------|------|------|------|
-| 0 | 灵感构思 | A | Sequential Thinking + Memory | 创意方案 |
-| 1 | 生成大纲 | B | Sequential Thinking + Filesystem | 7模块核心大纲 |
-| 2 | 写细纲 | B-2 | Memory + Filesystem + Sequential Thinking | 章节细纲 |
-| 3 | 细纲自检 | — | 一致性检查规则 | 自检报告 |
-| 4 | 写正文 | C | Memory读取→正文创作→自动校验→Memory更新 | 保存正文 |
-| 5 | 包装 | D | — | 书名/简介方案 |
-| 6 | 诊断复盘 | E | Sequential Thinking + Memory + Filesystem | 诊断报告+修复清单 |
+| 步骤 | 用户输入 | 模式 | 输出 |
+|------|---------|------|------|
+| 0 | 灵感构思 | A | 创意方案 |
+| 1 | 生成大纲 | B | 7模块核心大纲 |
+| 2 | 写细纲 | B-2 | 章节细纲 |
+| 3 | 写正文 | C | 保存正文 |
+| 4 | 包装 | D | 书名/简介方案 |
+| 5 | 诊断复盘 | E | 诊断报告+修复清单 |
 
 ### 文件管理规范
 
@@ -268,7 +269,26 @@ metadata:
   1. 执行 pwd 获取当前工作目录，作为所有路径的根
   2. 灵感/大纲/细纲/正文/包装目录在 pwd 下自动创建，不依赖任何绝对路径
   3. 保存文件时始终使用相对路径（./正文/...）而非绝对路径
+  4. 大纲文件自动保存：生成后自动保存至 `./大纲/[书名]_核心大纲_时间戳.md`
+  5. 文件名特殊字符自动处理：去除/替换非法字符（/:*?"<>|\\）
+  6. 多级备份机制：主目录失败时自动尝试用户文档目录和临时目录
 ```
+
+### 自动保存机制说明
+
+| 文件类型 | 保存路径 | 命名规则 | 触发时机 |
+|---------|---------|---------|---------|
+| 大纲文件 | `./大纲/` | `[书名]_核心大纲_YYYYMMDD_HHMMSS.md` | 大纲生成完成后 |
+| 细纲文件 | `./细纲/[卷名]/` | `第XXX章_[标题].md` | 每章细纲生成后 |
+| 正文文件 | `./正文/[卷名]/` | `第XXX章_[标题].md` | 每章正文完成后 |
+| 记忆库 | `./` | `记忆库.md` | 每次状态更新后 |
+
+**错误处理机制**：
+- ✅ 文件名特殊字符自动替换
+- ✅ 目录不存在时自动创建
+- ✅ 权限不足时自动降级到备用目录
+- ✅ 文件已存在时自动添加计数器后缀
+- ✅ 保存失败时显示友好错误提示
 
 ---
 
@@ -295,6 +315,8 @@ metadata:
 | 大纲评分6-7分 | → 输入"细纲"开始规划，建议后续使用"诊断细纲"优化 | 中等质量 |
 | 大纲评分<6分 | → 建议输入"诊断大纲"进行优化，或输入"大纲"重新生成 | 低质量大纲 |
 | 检测到设定冲突 | → 建议先输入"诊断大纲"修复冲突，再进入细纲阶段 | 设定问题 |
+
+**大纲自动保存机制**：大纲生成后自动保存至 `./大纲/[书名]_核心大纲_时间戳.md`，支持文件名特殊字符处理、权限检测、多级目录备份。
 
 #### 模式B-2（细纲规划）
 | 执行结果 | 推荐操作 | 触发条件 |
@@ -580,62 +602,31 @@ flowchart TD
 
 ---
 
-## 附录：模式子文件索引（v20.3）
+## 附录：模式子文件索引（v21.0精简版）
 
-| 文件 | 行数 | 功能 |
-|------|------|------|
-| [modes/mode-a-inspiration.md](modes/mode-a-inspiration.md) | 775行 | 灵感构思：创意方案生成、市场定位、瓶颈突破、灵感碰撞工作坊、灵感日推、瓶颈突破工作坊、市场趋势分析、基础设定完整性检测 |
-| [modes/mode-b-outline.md](modes/mode-b-outline.md) | v20.3精简 | 大纲架构（纯生成版）：7模块大纲、角色关系动态图谱、冲突设计详解、高潮与结局设计 |
-| [modes/mode-b/literary-mode.md](modes/mode-b/literary-mode.md) | 新增 | 文学性创作模式：主题深化、象征体系、叙事美学、文学性爽点（按需加载） |
-| [modes/mode-b/test-cases.md](modes/mode-b/test-cases.md) | 新增 | 多类型测试案例：5大类型×3级复杂度、批量测试模式（按需加载） |
-| [modes/mode-b2-detailed-outline.md](modes/mode-b2-detailed-outline.md) | v20.3精简 | 细纲工程编排器（纯生成版）：子模块索引、条件触发机制、依赖关系图、接口规范 |
-| [modes/mode-b2/detailed-outline-core.md](modes/mode-b2/detailed-outline-core.md) | 新增 | 细纲核心输出模板：撰写流程、冲突追踪、高潮/结局里程碑（必加载） |
-| [modes/mode-b2/template-library.md](modes/mode-b2/template-library.md) | 新增 | 细纲模板库：4类型模板、差异对比、自定义模板（手动触发） |
-| [modes/mode-c-writing.md](modes/mode-c-writing.md) | v20.3精简 | 正文创作编排器（纯生成版）：子模块索引、条件触发机制、依赖关系图、接口规范 |
-| [modes/mode-c/writing-workflow.md](modes/mode-c/writing-workflow.md) | 新增 | 写作流程与项目管理：写作模式、章节编号、进度追踪、前置要求、排版规则、写作规则（首次必加载） |
-| [modes/mode-c/scene-techniques.md](modes/mode-c/scene-techniques.md) | 224行 | 场景描写技法：镜头语言、多题材实战示例、扩充三大技法（按需加载） |
-| [modes/mode-c/character-dialogue.md](modes/mode-c/character-dialogue.md) | 298行 | 角色灵魂注入+对话技法：潜台词四法、快慢节奏、沉默戏剧、权力博弈（按需加载） |
-| [modes/mode-c/chapter-openings.md](modes/mode-c/chapter-openings.md) | 新增 | 章节开头技巧：十种强力开头+三题材示例（每章必加载） |
-| [modes/mode-c/hook-techniques.md](modes/mode-c/hook-techniques.md) | 新增 | 悬念钩子分类：十三种钩子+网文示例+强度检查（每章必加载） |
-| [modes/mode-c/version-management.md](modes/mode-c/version-management.md) | 243行 | 章节版本管理：版本记录、对比、回退、清理、分支创作、快照（手动触发） |
-| [modes/mode-c/reader-preview.md](modes/mode-c/reader-preview.md) | 新增 | 读者视角预览：模拟阅读体验、模拟评论生成、5维读者视角质量评估（手动触发） |
-| [modes/mode-d-packaging.md](modes/mode-d-packaging.md) | 211行 | 包装运营：书名优化、简介打磨、标签提炼、多平台格式适配 |
-| [modes/mode-e-diagnostics.md](modes/mode-e-diagnostics.md) | v20.3重构 | 统一诊断中心：三级诊断菜单、统一数据总线、大纲/细纲/正文诊断子模块索引、14维诊断、批量修复、跨卷节奏、统一仪表板、读者模拟 |
-| [modes/mode-e/dashboard.md](modes/mode-e/dashboard.md) | v20.3合并 | 统一创作仪表板：7模块数据分析+实时创作仪表板+可视化状态面板+趋势预警+质量趋势图 |
-| [modes/mode-e/diagnosis-details.md](modes/mode-e/diagnosis-details.md) | 265行 | 14维诊断+大纲一致性+毒点排查+人物关系过渡+角色身份交代+神秘感悬念+世界观展开+人物群像+爽点质量+前期铺垫+基础设定完整性诊断（按需加载） |
-| [modes/mode-e/cross-volume-rhythm.md](modes/mode-e/cross-volume-rhythm.md) | 240行 | 跨卷检测+节奏评分（按需加载） |
-| [modes/mode-e/reader-visualization.md](modes/mode-e/reader-visualization.md) | 370行 | 读者模拟+多模态可视化（按需加载） |
-| [modes/mode-e/batch-auto-fix.md](modes/mode-e/batch-auto-fix.md) | 新增 | 批量自动诊断+修复：细纲/正文逐章诊断、P0/P1自动修复、仅诊断模式、大纲反向补充 |
-| [modes/mode-e/outline-plot-deep-diagnosis.md](modes/mode-e/outline-plot-deep-diagnosis.md) | 新增 | 大纲-剧情深度诊断与联动修正：大纲变更自动触发、番茄平台标准评估、大纲深度关联丰富、跨章节联动修正 |
-| [modes/mode-e/outline-diagnostics/outline-evaluation.md](modes/mode-e/outline-diagnostics/outline-evaluation.md) | v20.3迁移 | 大纲质量量化评估：4维评分体系、评级标准、快速评估模式（从模式B迁移） |
-| [modes/mode-e/outline-diagnostics/setting-detection.md](modes/mode-e/outline-diagnostics/setting-detection.md) | v20.3迁移 | 基础设定完整性检测：13维检测、分级提示、交互规则（从模式B迁移） |
-| [modes/mode-e/detailed-outline-diagnostics/quality-scoring.md](modes/mode-e/detailed-outline-diagnostics/quality-scoring.md) | v20.3迁移 | 细纲质量自动评分：5维评分体系、评分细则、批量评分汇总（从模式B-2迁移） |
-| [modes/mode-e/detailed-outline-diagnostics/reverse-verification.md](modes/mode-e/detailed-outline-diagnostics/reverse-verification.md) | v20.3迁移 | 细纲→大纲反向校验：8项校验、偏离严重度判定、自动修正（从模式B-2迁移） |
-| [modes/mode-e/detailed-outline-diagnostics/consistency-check.md](modes/mode-e/detailed-outline-diagnostics/consistency-check.md) | v20.3迁移 | 一致性检查与变更影响：16项检查、影响范围判定、自动修复（从模式B-2迁移） |
-| [modes/mode-e/detailed-outline-diagnostics/linkage-optimization.md](modes/mode-e/detailed-outline-diagnostics/linkage-optimization.md) | v20.3迁移 | 多章节联动优化：5维检测、爽点轮换、冲突节奏、高潮推进（从模式B-2迁移） |
-| [modes/mode-e/detailed-outline-diagnostics/reverse-supplement.md](modes/mode-e/detailed-outline-diagnostics/reverse-supplement.md) | v20.3迁移 | 细纲→大纲反向补充：缺口发现、补充方案生成（从模式B-2迁移） |
-| [modes/mode-e/detailed-outline-diagnostics/chapter-pacing.md](modes/mode-e/detailed-outline-diagnostics/chapter-pacing.md) | v20.3迁移 | 章节节奏控制：内部/外部冲突追踪、高潮铺垫、结局伏笔、节奏健康度（从模式B-2迁移） |
-| [modes/mode-e/writing-diagnostics/auto-validation.md](modes/mode-e/writing-diagnostics/auto-validation.md) | v20.3迁移 | 自动校验闭环：7维校验清单、文风深度校验、修复规则、校验报告（从模式C迁移） |
-| [modes/mode-e/writing-diagnostics/quality-assurance.md](modes/mode-e/writing-diagnostics/quality-assurance.md) | v20.3迁移 | AB测试+过渡检测+跨章节校验（从模式C迁移） |
-| [modes/mode-e/writing-diagnostics/style-fingerprint.md](modes/mode-e/writing-diagnostics/style-fingerprint.md) | v20.3迁移 | 创作风格指纹：6维指纹提取、实时监控、风格迁移(5种)、演化追踪（从模式C迁移） |
-| [modes/mode-e/writing-diagnostics/reader-retention.md](modes/mode-e/writing-diagnostics/reader-retention.md) | v20.3迁移 | 读者留存预测：留存率预测、弃书风险定位、追读意愿曲线、A/B测试框架（从模式C迁移） |
-| [modes/mode-e/writing-diagnostics/content-expansion.md](modes/mode-e/writing-diagnostics/content-expansion.md) | v20.3迁移 | 内容扩充技巧：五大扩充技法+防注水原则（从模式C迁移） |
-| [modes/mode-f-auto-pipeline.md](modes/mode-f-auto-pipeline.md) | 172行 | 全自动流水线：7阶段自动化+并行模式 |
+### 核心模式文件
+
+| 文件 | 功能 |
+|------|------|
+| [mode-a-inspiration.md](modes/mode-a-inspiration.md) | 灵感构思/Professional Mode |
+| [mode-b-outline.md](modes/mode-b-outline.md) | 大纲生成 |
+| [mode-b2-detailed-outline.md](modes/mode-b2-detailed-outline.md) | 细纲规划 |
+| [mode-c-writing.md](modes/mode-c-writing.md) | 正文创作 |
+| [mode-d-packaging.md](modes/mode-d-packaging.md) | 包装运营 |
+| [mode-e-diagnostics.md](modes/mode-e-diagnostics.md) | 统一诊断中心 |
+| [mode-f-auto-pipeline.md](modes/mode-f-auto-pipeline.md) | 全自动流水线 |
+| [mode-card-drawing.md](modes/mode-card-drawing.md) | Card Drawing Mode |
 
 ### 共享模块
 
-| 文件 | 行数 | 功能 |
-|------|------|------|
-| [shared/mcp-specs.md](shared/mcp-specs.md) | 85行 | MCP工具调用规范 |
-| [shared/preferences.md](shared/preferences.md) | 108行 | 偏好管理+中断续写+里程碑 |
-| [shared/output-formats.md](shared/output-formats.md) | 72行 | 输出格式模板 |
-| [shared/boundaries.md](shared/boundaries.md) | 97行 | 边界定义+异常处理+新手引导+模式切换 |
-| [shared/ethics.md](shared/ethics.md) | 64行 | AI伦理+原创性+合规 |
-| [shared/plot-structures.md](shared/plot-structures.md) | 新增 | 情节结构模板库：通用/类型专用/网文特色/高级结构 |
-| [shared/genre-guides.md](shared/genre-guides.md) | 新增 | 题材差异化指南：5大题材专项指导 |
-| [shared/templates.md](shared/templates.md) | 新增 | 创作模板市场：5大网文经典模板 |
-| [shared/knowledge-graph.md](shared/knowledge-graph.md) | 新增 | 创作知识图谱：人物关系（含关系过渡追踪+身份交代追踪）、势力网络、伏笔链、时间线、物品传承 |
-| [shared/health-monitor.md](shared/health-monitor.md) | 新增 | 创作健康度监控：节奏监控、质量预警、瓶颈预警、成就系统、复盘报告 |
-| [shared/self-improvement.md](shared/self-improvement.md) | 新增 | 技能自我诊断与进化：诊断遗漏分析、提示词优化方案生成、用户确认后自动修改、主动巡检 |
-| [shared/outline-supplement.md](shared/outline-supplement.md) | 429行 | 大纲反向补充：细纲→大纲缺口识别、8大模块补充方案生成、自动/手动补充、基础设定完整性缺口检测 |
-| [shared/interface-specs.md](shared/interface-specs.md) | 新增 | 编排器-子模块接口规范：通用接口契约、各模式I/O schema、错误处理规范、版本兼容性 |
+| 文件 | 功能 |
+|------|------|
+| [shared/boundaries.md](shared/boundaries.md) | 边界/异常/模式切换 |
+| [shared/output-formats.md](shared/output-formats.md) | 输出格式模板 |
+| [shared/templates.md](shared/templates.md) | 创作模板市场 |
+| [shared/plot-structures.md](shared/plot-structures.md) | 情节结构模板 |
+| [shared/genre-guides.md](shared/genre-guides.md) | 题材差异化指南 |
+
+---
+
+**完整文件列表请参考各模式目录。**
