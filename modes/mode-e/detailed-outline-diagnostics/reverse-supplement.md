@@ -1,7 +1,7 @@
 # 模式B-2子模块：细纲→大纲反向补充
 
 > **所属**：novel-writer 模式B-2细纲工程 | **触发**：每完成10章细纲自动触发
-> **版本**：v1.0 | **依赖**：[shared/outline-supplement.md](../../shared/outline-supplement.md)
+> **版本**：v1.0 | **依赖**：<shared/outline-supplement.md](../../shared/outline-supplement.md)
 
 ---
 
@@ -32,7 +32,7 @@
 ## 详细实现
 
 > 本模块的详细实现（缺口识别维度、补充方案生成规则、报告格式、聚合分析规则、自动/手动补充策略）参见共享模块：
-> [shared/outline-supplement.md](../../shared/outline-supplement.md)
+> <shared/outline-supplement.md>(../../shared/outline-supplement.md)
 
 该共享模块包含：
 - 8大维度大纲缺口检测（世界观/力量体系/人物设定/情节线/爽点节奏/伏笔一致性/金手指核心设定/基础设定完整性）
