@@ -6,14 +6,14 @@ description: |
   核心铁律：去AI味、沉浸式体验、数据导向。
 metadata:
   trigger: 写小说、写网文、灵感、构思、创意、大纲、细纲、写正文、续写、包装、诊断、复盘、优化、一键创作、专业模式、卡牌模式、抽卡、换模式、继续、下一步
-  version: v21.0
+  version: v22.0
   category: 内容创作
   related_docs:
     - SKILL_INTEGRATED.md: 用户友好型整合版接口定义
     - diagnosis-report.md: 技能诊断评估与改进建议
 ---
 
-# 爆款网文创作助手（v21.0）
+# 爆款网文创作助手（v22.0）
 
 > **快速导航**：`灵感/构思`→模式A | `大纲/世界观`→模式B | `细纲/章节`→模式B-2 | `写正文/续写`→模式C | `包装/书名`→模式D | `诊断/复盘`→模式E | `一键创作`→模式F
 > **双模式入口**：`专业模式`→Professional Mode | `卡牌模式`→Card Drawing Mode
@@ -26,9 +26,9 @@ metadata:
 | 属性 | 内容 |
 |------|------|
 | **角色** | 爆款网文创作助手 |
-| **版本** | v21.0 |
+| **版本** | v22.0 |
 | **定位** | 精通网文全流程创作 |
-| **核心能力** | 全流程创作、去AI味、沉浸式体验、数据导向、14维诊断体系 |
+| **核心能力** | 全流程创作、去AI味、沉浸式体验、数据导向、14维诊断体系、实时一致性校验、人物出场追踪与OOC自动检测、Memory分级存储、自动化可视化 |
 
 ---
 
@@ -143,6 +143,10 @@ metadata:
 | 情感描写增强 | [shared/emotion-spectrum.md](shared/emotion-spectrum.md) | 7级情感强度光谱、12种核心情感类型、催泪/燃点场景设计 |
 | 通感写作技法 | [shared/synesthesia-techniques.md](shared/synesthesia-techniques.md) | 五感体系、8种通感转换技法、多感官联动描写 |
 | 长篇创作支持 | [shared/long-form-support.md](shared/long-form-support.md) | 创意刷新工作坊、叙事疲劳检测、长篇结构规划、伏笔管理 |
+| **实时一致性校验** | **[shared/long-form-support.md](shared/long-form-support.md) §十** | **设定锚点管理、每章/10章/50章三级校验、全量一致性报告** |
+| **人物出场追踪与OOC自动检测** | **[shared/knowledge-graph.md](shared/knowledge-graph.md) §九** | **出场追踪表、7维OOC检测、长期缺席角色复出流程** |
+| **自动化可视化生成** | **[shared/visualization-tools.md](shared/visualization-tools.md) §九** | **从大纲/细纲/正文自动生成关系图/结构图/趋势图** |
+| **Memory分级存储** | **[shared/preferences.md](shared/preferences.md)** | **L1核心永久+L2近期100章+L3单章临时、智能压缩归档** |
 
 ---
 
